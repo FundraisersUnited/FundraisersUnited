@@ -1,0 +1,19 @@
+PLACEHOLDER IMAGES NEEDED FOR THE WEBSITE
+
+The following images need to be added to make the website complete:
+
+1. hero-bg.jpg - A high-quality image of fundraisers in action on the street or at a private site, to be used as the hero section background (recommended size: 1920x1080px)
+
+2. team-placeholder.jpg - An image showing a diverse, happy team of fundraisers (recommended size: 600x400px)
+
+3. charity-placeholder.jpg - An image representing charity partnerships, perhaps showing fundraisers with charity representatives or branded materials (recommended size: 600x400px)
+
+4. testimonial1-placeholder.jpg - A professional headshot of a person who could represent a charity partner (recommended size: 100x100px)
+
+Note: For the actual implementation, replace these placeholder images with authentic, high-quality photographs that represent Fundraisers United. Ensure all images are properly licensed or owned by the company.
+
+Image optimization tips:
+- Compress all images to reduce file size while maintaining quality
+- Use JPG format for photographs
+- Consider using WebP format with JPG fallback for better performance
+- Include appropriate alt text for accessibility 

@@ -6,9 +6,207 @@
     <title>Fundraisers United - Leading F2F Fundraising Agency in Australia</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Modern fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%234361ee'/%3E%3Cpath d='M22 18h20v8H22zm0 14h14v8H22zM22 18h8v30h-8z' fill='white'/%3E%3C/svg%3E">
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Fundraisers United - Leading F2F Fundraising Agency in Australia">
+    <meta property="og:description" content="Connect with passionate, long-term donors through our highly trained F2F fundraisers.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://fundraisersunited.com.au">
+    <style>
+        /* Inline styles for the placeholder images */
+        .team-image-placeholder {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            height: 400px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-image-placeholder:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none" opacity="0.1"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.2;
+        }
+        
+        .team-image-placeholder:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .charity-image-placeholder {
+            background: linear-gradient(135deg, #7209b7, #560bad);
+            height: 400px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .charity-image-placeholder:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none" opacity="0.1"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.2;
+        }
+        
+        .charity-image-placeholder:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .testimonial-author-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38b000, #70e000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-author-placeholder:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Animation classes */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .animate-fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
+        
+        /* Form styles */
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .form-group.focused label {
+            transform: translateY(-24px) scale(0.85);
+            color: var(--primary-color);
+        }
+        
+        .form-group label {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            transform-origin: left top;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 15px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-color: #ff4d4f;
+            background-color: rgba(255, 77, 79, 0.05);
+        }
+        
+        .error-message {
+            color: #ff4d4f;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            animation: fadeIn 0.3s ease forwards;
+        }
+        
+        .success-message {
+            padding: 30px;
+            background-color: #f6ffed;
+            border: 1px solid #b7eb8f;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .success-message i {
+            font-size: 2rem;
+            color: #52c41a;
+        }
+        
+        .success-message p {
+            margin: 0;
+            font-weight: 500;
+            color: #52c41a;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header style="background: linear-gradient(rgba(33, 37, 41, 0.85), rgba(33, 37, 41, 0.85)), linear-gradient(135deg, #4361ee, #7209b7) no-repeat center center/cover;">
         <nav>
             <div class="logo">
                 <a href="index.html">Fundraisers United</a>
@@ -150,7 +348,7 @@
                     <a href="#contact" class="btn primary">Apply Now</a>
                 </div>
                 <div class="join-image">
-                    <img src="images/team-placeholder.jpg" alt="Happy fundraising team">
+                    <div class="team-image-placeholder">Our Amazing Team</div>
                 </div>
             </div>
         </div>
@@ -161,7 +359,7 @@
             <h2>For Charities</h2>
             <div class="charities-content">
                 <div class="charities-image">
-                    <img src="images/charity-placeholder.jpg" alt="Charity partnership">
+                    <div class="charity-image-placeholder">Charity Partners</div>
                 </div>
                 <div class="charities-text">
                     <h3>Why Partner With Us?</h3>
@@ -186,7 +384,7 @@
                 <div class="testimonial">
                     <p>"Fundraisers United has consistently delivered high-quality donors who stay with our cause. Their performance metrics are outstanding, and their team is professional and represents our brand exceptionally well."</p>
                     <div class="testimonial-author">
-                        <img src="images/testimonial1-placeholder.jpg" alt="Testimonial author">
+                        <div class="testimonial-author-placeholder">JS</div>
                         <div>
                             <h4>Jane Smith</h4>
                             <p>Fundraising Director, Australian Wildlife Foundation</p>
@@ -202,13 +400,13 @@
             <h2>Contact Us</h2>
             <div class="contact-content">
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
@@ -224,7 +422,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message">Your Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn primary">Send Message</button>
@@ -244,9 +442,10 @@
                         <p>info@fundraisersunited.com.au</p>
                     </div>
                     <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>

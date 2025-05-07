@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Download Instructions - Fundraisers United</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        header {
+            background: linear-gradient(135deg, #4361ee, #7209b7);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        h2 {
+            color: #4361ee;
+            border-bottom: 2px solid #7209b7;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4361ee, #7209b7);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+        }
+        .tip {
+            background-color: #f6ffed;
+            border-left: 4px solid #52c41a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning {
+            background-color: #fff2f0;
+            border-left: 4px solid #ff4d4f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Logo Download Instructions</h1>
+        <p>Step-by-step guide to get your logo from Looka.com</p>
+    </header>
+
+    <div class="card">
+        <h2>Method 1: Download Directly from Looka</h2>
+        <ol>
+            <li>Visit your logo at Looka.com through this link:
+                <a href="https://looka.com/editor/219944293" target="_blank">https://looka.com/editor/219944293</a>
+            </li>
+            <li>Log in to your Looka account if prompted</li>
+            <li>When your logo appears in the editor, you can:
+                <ul>
+                    <li>Click on "Download" or "Export" buttons (usually in the top-right corner)</li>
+                    <li>OR right-click on the logo and select "Save image as..."</li>
+                </ul>
+            </li>
+            <li>Save the file as <code>fundraisers-united-logo.png</code> in the <code>images</code> folder of your website project</li>
+        </ol>
+        <a href="https://looka.com/editor/219944293" target="_blank" class="button">Open Looka Editor</a>
+    </div>
+
+    <div class="card">
+        <h2>Method 2: Use a Screenshot Tool</h2>
+        <ol>
+            <li>Open your logo in the Looka editor</li>
+            <li>Take a screenshot of your logo:
+                <ul>
+                    <li>Windows: Press <code>Windows + Shift + S</code> to use the Snipping Tool</li>
+                    <li>Mac: Press <code>Command + Shift + 4</code> to capture a selection</li>
+                </ul>
+            </li>
+            <li>Save the screenshot as <code>fundraisers-united-logo.png</code> in the <code>images</code> folder</li>
+        </ol>
+        <div class="tip">
+            <strong>Tip:</strong> Make sure to capture the logo with a transparent background if possible. If your logo has a colored background, try to isolate just the logo itself.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Method 3: Run Our Python Helper Script</h2>
+        <ol>
+            <li>Make sure you have Python installed on your computer</li>
+            <li>Open a command prompt or terminal in your website folder</li>
+            <li>Run one of our helper scripts:
+                <ul>
+                    <li><code>python logo_helper.py</code> - Simple version with minimal dependencies</li>
+                    <li><code>python download_logo.py</code> - More advanced version (requires extra libraries)</li>
+                </ul>
+            </li>
+            <li>Follow the on-screen instructions in the tool</li>
+        </ol>
+        <div class="warning">
+            <strong>Note:</strong> The Python scripts may require additional libraries. If you encounter errors, please use Method 1 or Method 2 instead.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Where to Place Your Logo</h2>
+        <p>After downloading the logo, make sure:</p>
+        <ol>
+            <li>The file is named <code>fundraisers-united-logo.png</code></li>
+            <li>It's saved in the <code>images</code> folder of your website project</li>
+        </ol>
+        <p>Your website is already configured to use the logo in the header and footer once it's correctly placed in the images folder.</p>
+    </div>
+
+    <div class="card">
+        <h2>Further Assistance</h2>
+        <p>If you need additional help downloading or implementing your logo, please don't hesitate to contact us.</p>
+    </div>
+
+    <script>
+        // JavaScript to create the images folder if it doesn't exist 
+        // (Note: this only works when served via a local server, not when opened directly as a file)
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // This is just for information - the script can't actually create folders in the browser
+                console.log("Checking for images folder...");
+                // In a real environment, you'd use server-side code or Node.js to create the folder
+            } catch (e) {
+                console.error("Could not check for images folder: ", e);
+            }
+        });
+    </script>
+</body>
+</html> 

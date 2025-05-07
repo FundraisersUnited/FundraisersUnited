@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Generator - Fundraisers United</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 {
+            text-align: center;
+            color: #4361ee;
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .logo {
+            position: relative;
+            width: 300px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .logo-1 {
+            background: linear-gradient(135deg, #4361ee, #7209b7);
+            border-radius: 10px;
+        }
+        .logo-2 {
+            background: white;
+            color: #4361ee;
+            border: 2px solid #4361ee;
+            border-radius: 10px;
+        }
+        .logo-3 {
+            background: #333;
+            border-radius: 50px;
+        }
+        .logo-4 {
+            background: transparent;
+            color: #4361ee;
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px rgba(114, 9, 183, 0.3);
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4361ee, #7209b7);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        .instructions {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            border-radius: 5px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Temporary Logo Generator</h1>
+        <p>Click on any logo design to save it as an image. These are temporary placeholders until you download your logo from Looka.</p>
+        
+        <div class="logo-container">
+            <div class="logo logo-1" data-id="1">Fundraisers United</div>
+            <div class="logo logo-2" data-id="2">Fundraisers United</div>
+            <div class="logo logo-3" data-id="3">Fundraisers United</div>
+            <div class="logo logo-4" data-id="4">Fundraisers United</div>
+        </div>
+        
+        <div style="text-align: center;">
+            <canvas id="logoCanvas" width="600" height="200" style="display: none;"></canvas>
+            <a id="downloadBtn" class="btn" download="fundraisers-united-logo.png" href="#">Download Selected Logo</a>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Click on a logo design above to select it</li>
+                <li>Click the "Download" button to save the logo as PNG</li>
+                <li>Save the file as <code>fundraisers-united-logo.png</code> in the <code>images</code> folder</li>
+                <li>Once you have your official logo from Looka, replace this temporary one</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Set up canvas for converting the logo to an image
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+        const downloadBtn = document.getElementById('downloadBtn');
+        let selectedLogo = null;
+        
+        // Function to draw logo on canvas
+        function drawLogoOnCanvas(logo) {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const logoId = logo.getAttribute('data-id');
+            const text = logo.textContent;
+            
+            // Center position
+            const x = canvas.width / 2;
+            const y = canvas.height / 2;
+            
+            // Common text settings
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Draw according to style
+            switch(logoId) {
+                case '1':
+                    // Create gradient background
+                    const gradient1 = ctx.createLinearGradient(x - 150, y - 40, x + 150, y + 40);
+                    gradient1.addColorStop(0, '#4361ee');
+                    gradient1.addColorStop(1, '#7209b7');
+                    
+                    // Draw rounded rectangle
+                    ctx.fillStyle = gradient1;
+                    roundRect(ctx, x - 150, y - 40, 300, 80, 10, true);
+                    
+                    // Draw text
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 24px Arial';
+                    ctx.fillText(text.toUpperCase(), x, y);
+                    break;
+                    
+                case '2':
+                    // Draw white background with border
+                    ctx.fillStyle = 'white';
+                    roundRect(ctx, x - 150, y - 40, 300, 80, 10, true);
+                    ctx.strokeStyle = '#4361ee';
+                    ctx.lineWidth = 2;
+                    roundRect(ctx, x - 150, y - 40, 300, 80, 10, false, true);
+                    
+                    // Draw text
+                    ctx.fillStyle = '#4361ee';
+                    ctx.font = 'bold 24px Arial';
+                    ctx.fillText(text.toUpperCase(), x, y);
+                    break;
+                    
+                case '3':
+                    // Draw rounded dark background
+                    ctx.fillStyle = '#333';
+                    roundRect(ctx, x - 150, y - 40, 300, 80, 40, true);
+                    
+                    // Draw text
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 24px Arial';
+                    ctx.fillText(text.toUpperCase(), x, y);
+                    break;
+                    
+                case '4':
+                    // Draw transparent background (actually white for PNG)
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Draw text with shadow
+                    ctx.fillStyle = '#4361ee';
+                    ctx.font = '900 30px Arial';
+                    ctx.letterSpacing = '1px';
+                    ctx.shadowColor = 'rgba(114, 9, 183, 0.3)';
+                    ctx.shadowBlur = 0;
+                    ctx.shadowOffsetX = 2;
+                    ctx.shadowOffsetY = 2;
+                    ctx.fillText(text.toUpperCase(), x, y);
+                    
+                    // Reset shadow
+                    ctx.shadowColor = 'transparent';
+                    ctx.shadowBlur = 0;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+                    break;
+            }
+        }
+        
+        // Helper function for rounded rectangles
+        function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+            if (typeof stroke === 'undefined') {
+                stroke = false;
+            }
+            if (typeof radius === 'undefined') {
+                radius = 0;
+            }
+            
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            
+            if (fill) {
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.stroke();
+            }
+        }
+        
+        // Add click event to all logos
+        document.querySelectorAll('.logo').forEach(logo => {
+            logo.addEventListener('click', function() {
+                // Remove highlight from previously selected logo
+                if (selectedLogo) {
+                    selectedLogo.style.boxShadow = '';
+                }
+                
+                // Highlight selected logo and show canvas
+                this.style.boxShadow = '0 0 0 3px #4361ee';
+                selectedLogo = this;
+                canvas.style.display = 'block';
+                
+                // Draw logo on canvas
+                drawLogoOnCanvas(this);
+                
+                // Update download link
+                updateDownloadLink();
+            });
+        });
+        
+        // Function to update download link
+        function updateDownloadLink() {
+            const dataURL = canvas.toDataURL('image/png');
+            downloadBtn.href = dataURL;
+        }
+        
+        // Initially select the first logo
+        document.querySelector('.logo-1').click();
+    </script>
+</body>
+</html> 

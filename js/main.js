@@ -91,9 +91,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const scrollHeight = window.pageYOffset;
             const headerHeight = header.offsetHeight;
             
-            if (scrollHeight > headerHeight - navHeight) {
+            if (scrollHeight > headerHeight - 100) {
                 nav.classList.add('fixed-nav');
                 document.body.style.paddingTop = navHeight + 'px';
+                
+                // Set optimal size for the logo in fixed nav
+                logo.style.transition = 'all 0.3s ease';
                 
                 // Only add slide-in animation once
                 if (!nav.classList.contains('slide-in')) {
@@ -103,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 nav.classList.remove('fixed-nav');
                 document.body.style.paddingTop = 0;
                 nav.classList.remove('slide-in');
+                
+                // Reset logo styles when not in fixed nav
+                logo.style.transition = '';
             }
         });
     }

@@ -1365,8 +1365,7 @@ nav {
     background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none" opacity="0.1"/></svg>');
     background-repeat: repeat;
     z-index: 0;
-    opacity: 0.15;
-    animation: floatAnimation 15s ease-in-out infinite alternate;
+    opacity: 0.1;
 }
 
 .contact-form {
@@ -1936,36 +1935,81 @@ footer:before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     z-index: 100;
     animation: slideDown 0.5s ease forwards;
-    padding: 10px 35px;
-    height: auto !important;
-    min-height: auto !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+    height: auto;
+    min-height: auto;
 }
 
 .fixed-nav .logo {
-    height: auto;
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
+    margin: 0;
     padding: 10px 0;
-    margin-top: 0 !important;
-    min-height: auto !important;
-    max-height: none !important;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    width: auto;
 }
 
 .fixed-nav .logo img {
-    max-height: none;
+    height: 100px;
     width: auto;
-    height: 180px;
     max-width: 100%;
-    transition: all 0.3s ease;
+    max-height: none;
 }
 
 .fixed-nav .nav-links {
-    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin: 0;
     padding: 0;
-    margin: 0 !important;
     background: transparent;
+    position: static;
+}
+
+@media screen and (max-width: 992px) {
+    .fixed-nav {
+        padding: 0 20px;
+    }
+    
+    .fixed-nav .logo img {
+        height: 80px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fixed-nav {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+    
+    .fixed-nav .logo {
+        margin-bottom: 10px;
+    }
+    
+    .fixed-nav .logo img {
+        height: 70px;
+    }
+    
+    .fixed-nav .nav-links {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .fixed-nav .logo img {
+        height: 60px;
+    }
 }
 
 @keyframes slideDown {
@@ -2062,43 +2106,6 @@ main {
     background-color: #ffffff;
     z-index: 2;
     display: block;
-}
-
-/* Extra responsive fixes */
-@media screen and (max-width: 992px) {
-    .fixed-nav .logo img {
-        height: 120px;
-        max-width: 90%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .fixed-nav {
-        padding: 10px 20px;
-        flex-wrap: wrap;
-    }
-    
-    .fixed-nav .logo {
-        margin-bottom: 10px;
-        width: 100%;
-        justify-content: center;
-        padding: 5px 0;
-    }
-    
-    .fixed-nav .logo img {
-        height: 100px;
-    }
-    
-    .fixed-nav .nav-links {
-        justify-content: center;
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .fixed-nav .logo img {
-        height: 80px;
-    }
 }
 
 /* Add animation delay for dignity section elements */

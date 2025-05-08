@@ -260,7 +260,7 @@ nav {
     height: auto;
     min-height: 280px;
     max-height: 340px;
-    background-color: rgba(45, 43, 58, 0.8);
+    background-color: transparent;
 }
 
 .logo a {

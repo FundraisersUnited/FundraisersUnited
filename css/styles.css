@@ -1,9 +1,9 @@
 /* Global Styles */
 :root {
-    --primary-color: #4361ee;
+    --primary-color: #FF3333;
     --secondary-color: #3a0ca3;
-    --accent-color: #7209b7;
-    --accent-light: #9d4edd;
+    --accent-color: #e63946;
+    --accent-light: #ff6b6b;
     --light-color: #f8f9fa;
     --dark-color: #15191e;
     --text-color: #495057;
@@ -179,7 +179,7 @@ section:nth-child(even) {
 
 .btn.primary:hover {
     transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 7px 15px rgba(67, 97, 238, 0.3);
+    box-shadow: 0 7px 15px rgba(255, 51, 51, 0.3);
 }
 
 .btn.secondary {
@@ -251,11 +251,11 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 15px 0;
     width: 100%;
     height: auto;
-    min-height: 200px;
-    max-height: 300px;
+    min-height: 220px;
+    max-height: 280px;
     background-color: rgba(45, 43, 58, 0.8);
 }
 
@@ -279,10 +279,10 @@ nav {
     max-height: none;
     min-height: auto;
     width: auto;
-    max-width: 40%;
+    max-width: 90%;
     vertical-align: middle;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    filter: drop-shadow(0 0 15px rgba(67, 97, 238, 0.3));
+    filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.3));
     padding: 0;
     border-radius: 0;
     background: none;
@@ -291,13 +291,13 @@ nav {
 
 @keyframes logoPulse {
     0% {
-        filter: drop-shadow(0 0 10px rgba(67, 97, 238, 0.2));
+        filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.2));
     }
     50% {
-        filter: drop-shadow(0 0 18px rgba(114, 9, 183, 0.4));
+        filter: drop-shadow(0 0 18px rgba(255, 51, 51, 0.4));
     }
     100% {
-        filter: drop-shadow(0 0 15px rgba(67, 97, 238, 0.3));
+        filter: drop-shadow(0 0 15px rgba(230, 57, 70, 0.3));
     }
 }
 
@@ -407,9 +407,9 @@ nav {
 }
 
 .hero h1 {
-    font-size: 4.8rem;
+    font-size: 4.5rem;
     line-height: 1.1;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 800;
     color: white;
     max-width: 900px;
@@ -427,11 +427,22 @@ nav {
     bottom: -20px;
     left: 0;
     border-radius: 3px;
-    box-shadow: 0 2px 10px rgba(114, 9, 183, 0.3);
+    box-shadow: 0 2px 10px rgba(255, 51, 51, 0.3);
+}
+
+.hero .tagline {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+    animation: fadeInUp 1s ease-out 0.1s both;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-primary);
 }
 
 .hero p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     max-width: 650px;
     margin-bottom: 3rem;
     animation: fadeInUp 1s ease-out 0.2s both;
@@ -557,8 +568,8 @@ nav {
 
 .service-card:hover {
     transform: translateY(-15px);
-    box-shadow: 0 15px 30px rgba(67, 97, 238, 0.1);
-    border-color: rgba(114, 9, 183, 0.1);
+    box-shadow: 0 15px 30px rgba(255, 51, 51, 0.1);
+    border-color: rgba(230, 57, 70, 0.1);
 }
 
 .service-card:before {
@@ -585,7 +596,7 @@ nav {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 5px rgba(67, 97, 238, 0.3));
+    filter: drop-shadow(0 2px 5px rgba(255, 51, 51, 0.3));
 }
 
 .service-card h3 {
@@ -705,7 +716,7 @@ nav {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 5px rgba(157, 78, 221, 0.5));
+    filter: drop-shadow(0 2px 5px rgba(255, 107, 107, 0.5));
 }
 
 .stat-item p {
@@ -871,7 +882,7 @@ nav {
 .dignity-benefit-item:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
-    border-color: rgba(114, 9, 183, 0.1);
+    border-color: rgba(230, 57, 70, 0.1);
 }
 
 .dignity-benefit-item i {
@@ -882,7 +893,7 @@ nav {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 5px rgba(67, 97, 238, 0.3));
+    filter: drop-shadow(0 2px 5px rgba(255, 51, 51, 0.3));
 }
 
 .dignity-benefit-item h4 {
@@ -1518,13 +1529,13 @@ footer:before {
 }
 
 .footer-logo img {
-    max-height: 500px;
-    min-height: 400px;
+    max-height: 300px;
+    min-height: 220px;
     width: auto;
     max-width: 90%;
-    margin-bottom: 25px;
-    filter: brightness(1.5) drop-shadow(0 0 12px rgba(67, 97, 238, 0.5));
-    padding: 20px;
+    margin-bottom: 20px;
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 51, 51, 0.5));
+    padding: 15px;
     border-radius: 15px;
     background: rgba(21, 25, 30, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1533,13 +1544,13 @@ footer:before {
 
 @keyframes footerLogoPulse {
     0% {
-        filter: brightness(1.3) drop-shadow(0 0 8px rgba(67, 97, 238, 0.3));
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(230, 57, 70, 0.3));
     }
     50% {
-        filter: brightness(1.5) drop-shadow(0 0 15px rgba(114, 9, 183, 0.4));
+        filter: brightness(1.3) drop-shadow(0 0 15px rgba(255, 51, 51, 0.4));
     }
     100% {
-        filter: brightness(1.4) drop-shadow(0 0 12px rgba(67, 97, 238, 0.5));
+        filter: brightness(1.2) drop-shadow(0 0 12px rgba(230, 57, 70, 0.5));
     }
 }
 
@@ -1655,12 +1666,12 @@ footer:before {
     }
     
     .logo {
-        min-height: 150px;
-        max-height: 200px;
+        min-height: 140px;
+        max-height: 180px;
     }
     
     .logo img {
-        max-width: 50%;
+        max-width: 70%;
     }
     
     .nav-links {
@@ -1704,12 +1715,12 @@ footer:before {
 
 @media screen and (max-width: 768px) {
     .logo {
-        min-height: 120px;
-        max-height: 180px;
+        min-height: 100px;
+        max-height: 140px;
     }
     
     .logo img {
-        max-width: 60%;
+        max-width: 65%;
     }
     
     .nav-links {
@@ -1730,12 +1741,16 @@ footer:before {
     }
     
     .footer-logo img {
-        max-height: 220px;
-        min-height: 180px;
+        max-height: 180px;
+        min-height: 140px;
     }
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .hero .tagline {
+        font-size: 1.4rem;
     }
 
     .hero p {
@@ -1819,12 +1834,12 @@ footer:before {
 
 @media screen and (max-width: 480px) {
     .logo {
-        min-height: 100px;
-        max-height: 150px;
+        min-height: 80px;
+        max-height: 120px;
     }
     
     .logo img {
-        max-width: 70%;
+        max-width: 80%;
     }
     
     .nav-links {
@@ -1844,8 +1859,8 @@ footer:before {
     }
     
     .footer-logo img {
-        max-height: 200px;
-        min-height: 160px;
+        max-height: 160px;
+        min-height: 120px;
     }
     
     section {
@@ -1936,9 +1951,9 @@ footer:before {
 }
 
 .fixed-nav .logo img {
-    max-height: 70px;
+    max-height: 60px;
     min-height: unset;
-    max-width: 200px;
+    max-width: 180px;
 }
 
 .fixed-nav .nav-links {
@@ -2025,6 +2040,7 @@ footer:before {
 
 /* Text animations */
 .hero h1,
+.hero .tagline,
 .hero p,
 .hero-buttons {
     animation-fill-mode: both;
@@ -2074,9 +2090,9 @@ main {
 }
 
 .fixed-nav .logo img {
-    max-height: 70px;
+    max-height: 60px;
     min-height: unset;
-    max-width: 200px;
+    max-width: 180px;
 }
 
 .fixed-nav .nav-links {
@@ -2089,7 +2105,7 @@ main {
 /* Extra responsive fixes */
 @media screen and (max-width: 992px) {
     .fixed-nav .logo img {
-        max-height: 60px;
+        max-height: 50px;
     }
 }
 

@@ -153,10 +153,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
                 
-                // Simulate form submission (replace with actual AJAX in production)
-                setTimeout(() => {
-                    // In a real implementation, you would send the form data to a server
-                    // For now, we'll just show a success message
+                // Form data to send
+                const formData = new FormData(contactForm);
+                
+                // Send the form data using FormSubmit service
+                fetch('https://formsubmit.co/Admin@fundraisersunited.com.au', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Show success message
                     const formWrapper = contactForm.parentElement;
                     const successMessage = document.createElement('div');
                     successMessage.className = 'success-message animate-fade-in';
@@ -170,7 +185,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         formWrapper.appendChild(successMessage);
                         formWrapper.classList.remove('animate-fade-out');
                     }, 300);
-                }, 1500);
+                })
+                .catch(error => {
+                    // Handle errors
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.textContent = 'There was a problem sending your message. Please try again later.';
+                    contactForm.appendChild(errorMessage);
+                    
+                    // Scroll to error message
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    console.error('Error:', error);
+                });
             }
         });
         

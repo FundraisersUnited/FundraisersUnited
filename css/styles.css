@@ -1613,6 +1613,37 @@ footer:before {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* Footer info container styling */
+.footer-info-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-info-container p {
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.footer-info-container p strong {
+    color: white;
+    font-size: 1rem;
+}
+
+.footer-info-container a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.footer-info-container a:hover {
+    color: white;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 992px) {
     h1 {
@@ -1774,6 +1805,15 @@ footer:before {
     .profile-text p:last-child {
         text-align: left;
         font-size: 0.95rem;
+    }
+
+    .footer-info-container {
+        padding: 15px;
+        margin-top: 15px;
+    }
+    
+    .footer-info-container p {
+        font-size: 0.8rem;
     }
 }
 

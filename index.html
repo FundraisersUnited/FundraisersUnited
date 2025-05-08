@@ -476,7 +476,13 @@
                 <h2>Contact Us</h2>
                 <div class="contact-content">
                     <div class="contact-form">
-                        <form id="contactForm">
+                        <form id="contactForm" action="https://formsubmit.co/Admin@fundraisersunited.com.au" method="POST">
+                            <!-- FormSubmit configuration -->
+                            <input type="hidden" name="_subject" value="New contact from Fundraisers United website">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://fundraisersunited.com.au/thank-you.html">
+                            
                             <div class="form-group">
                                 <label for="name">Your Name</label>
                                 <input type="text" id="name" name="name" required>
@@ -507,15 +513,23 @@
                     <div class="contact-info">
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p>123 Fundraising Street<br>Sydney, NSW 2000<br>Australia</p>
+                            <p>Melbourne, Victoria, 3000<br>Australia</p>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-phone"></i>
-                            <p>+61 2 1234 5678</p>
+                            <p>+61 448 573 251</p>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-envelope"></i>
-                            <p>info@fundraisersunited.com.au</p>
+                            <p>Admin@fundraisersunited.com.au</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-globe"></i>
+                            <p>www.fundraisersunited.com.au</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-id-card"></i>
+                            <p>ABN: 52 686 198 023</p>
                         </div>
                         <div class="social-links">
                             <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
@@ -559,6 +573,14 @@
             </div>
             <div class="copyright">
                 <p>&copy; 2025 Fundraisers United. All rights reserved.</p>
+                <div class="footer-info-container">
+                    <p><strong>Fundraisers United (Australia)</strong></p>
+                    <p>Melbourne, Victoria, 3000, Australia</p>
+                    <p>ABN: 52 686 198 023</p>
+                    <p>Phone: +61 448 573 251</p>
+                    <p>Email: <a href="mailto:Admin@fundraisersunited.com.au">Admin@fundraisersunited.com.au</a></p>
+                    <p>Website: <a href="https://www.fundraisersunited.com.au" target="_blank">www.fundraisersunited.com.au</a></p>
+                </div>
             </div>
         </div>
     </footer>

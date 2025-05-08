@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add fixed navigation on scroll with animation
     const header = document.querySelector('header');
     const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo img');
     const navHeight = nav.offsetHeight;
     
     if (header && nav) {

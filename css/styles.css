@@ -1936,16 +1936,11 @@ footer:before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     z-index: 100;
     animation: slideDown 0.5s ease forwards;
-    padding: 0;
-    height: auto;
-    min-height: auto;
-}
-
-.fixed-nav nav {
     padding: 10px 35px;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-between;
+    height: auto !important;
+    min-height: auto !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
 }
 
 .fixed-nav .logo {
@@ -1953,19 +1948,23 @@ footer:before {
     flex: 0 0 auto;
     background-color: transparent;
     padding: 10px 0;
+    margin-top: 0 !important;
+    min-height: auto !important;
+    max-height: none !important;
 }
 
 .fixed-nav .logo img {
     max-height: none;
     width: auto;
     height: 180px;
+    max-width: 100%;
     transition: all 0.3s ease;
 }
 
 .fixed-nav .nav-links {
     position: static;
     padding: 0;
-    margin: 0;
+    margin: 0 !important;
     background: transparent;
 }
 
@@ -2068,12 +2067,13 @@ main {
 /* Extra responsive fixes */
 @media screen and (max-width: 992px) {
     .fixed-nav .logo img {
-        max-height: 100px;
+        height: 120px;
+        max-width: 90%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .fixed-nav nav {
+    .fixed-nav {
         padding: 10px 20px;
         flex-wrap: wrap;
     }
@@ -2082,11 +2082,22 @@ main {
         margin-bottom: 10px;
         width: 100%;
         justify-content: center;
+        padding: 5px 0;
+    }
+    
+    .fixed-nav .logo img {
+        height: 100px;
     }
     
     .fixed-nav .nav-links {
         justify-content: center;
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .fixed-nav .logo img {
+        height: 80px;
     }
 }
 

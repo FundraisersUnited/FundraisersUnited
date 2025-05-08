@@ -1958,7 +1958,7 @@ footer:before {
 .fixed-nav .logo img {
     max-height: none;
     width: auto;
-    height: 150px;
+    height: 180px;
     transition: all 0.3s ease;
 }
 
@@ -2065,54 +2065,10 @@ main {
     display: block;
 }
 
-/* Fixed Navigation */
-.fixed-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(30, 30, 44, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    animation: slideDown 0.5s ease forwards;
-    padding: 0;
-    height: auto;
-    min-height: auto;
-}
-
-.fixed-nav nav {
-    padding: 10px 35px;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.fixed-nav .logo {
-    height: auto;
-    flex: 0 0 auto;
-    background-color: transparent;
-    padding: 10px 0;
-}
-
-.fixed-nav .logo img {
-    max-height: none;
-    width: auto;
-    height: 150px;
-    transition: all 0.3s ease;
-}
-
-.fixed-nav .nav-links {
-    position: static;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-}
-
 /* Extra responsive fixes */
 @media screen and (max-width: 992px) {
     .fixed-nav .logo img {
-        max-height: 50px;
+        max-height: 100px;
     }
 }
 

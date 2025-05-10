@@ -4,6 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundraisers United - Leading F2F Fundraising Agency in Australia</title>
+    <!-- CRITICAL FIX: Inline script to ensure fixed nav works when scrolling -->
+    <script>
+        // This runs very early to ensure the nav bar works
+        window.addEventListener('scroll', function fixedNavEmergencyHandler() {
+            const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+            const nav = document.querySelector('nav');
+            if (scrollPos > 100 && nav) {
+                nav.classList.add('fixed-nav');
+                document.body.classList.add('scrolled');
+                nav.style.position = 'fixed';
+                nav.style.top = '0';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.zIndex = '9999';
+                nav.style.display = 'flex';
+                nav.style.visibility = 'visible';
+                nav.style.opacity = '1';
+            }
+        });
+        
+        // Force check on page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+            setTimeout(function() {
+                window.dispatchEvent(new Event('scroll'));
+            }, 500);
+        });
+    </script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Modern fonts -->

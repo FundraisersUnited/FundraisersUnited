@@ -1946,29 +1946,29 @@ footer:before {
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
     background-color: rgba(30, 30, 44, 0.98) !important;
     backdrop-filter: blur(10px) !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
     z-index: 9999 !important;
-    animation: slideDown 0.5s ease forwards !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
     padding: 0 35px !important;
-    height: 70px !important;
-    min-height: 70px !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transition: none !important;
+    transform: none !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
 }
 
-/* Override any display:none that might be affecting the fixed nav */
-nav.fixed-nav {
-    display: flex !important;
-    min-height: 70px !important;
+nav.fixed-nav * {
     visibility: visible !important;
     opacity: 1 !important;
-    pointer-events: auto !important;
 }
 
 .fixed-nav .logo {
@@ -1985,6 +1985,7 @@ nav.fixed-nav {
     width: auto !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transform: none !important;
 }
 
 .fixed-nav .logo a {
@@ -2002,15 +2003,21 @@ nav.fixed-nav {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transform: none !important;
 }
 
 .fixed-nav .logo a img {
     display: block !important;
     max-height: 55px !important;
+    height: auto !important;
     width: auto !important;
     filter: drop-shadow(0 0 10px rgba(255, 51, 51, 0.4)) !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transform: none !important;
+    max-width: 100% !important;
+    transition: none !important;
+    animation: none !important;
 }
 
 .fixed-nav .nav-links {
@@ -2024,10 +2031,12 @@ nav.fixed-nav {
     position: static !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transform: none !important;
+    height: auto !important;
 }
 
-/* Make sure navigation doesn't become invisible */
-body.scrolled nav:not(.fixed-nav) {
+/* Hide the regular nav when fixed nav is showing */
+body.scrolled header:not(.fixed-nav) {
     display: none !important;
 }
 
@@ -2036,13 +2045,9 @@ header.scrolled {
     display: none !important;
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
+/* CRITICAL FIXED NAVIGATION FIX - Adding at the very end to override all other styles */
+body.scrolled {
+    padding-top: 70px !important;
 }
 
 .form-group input.error,

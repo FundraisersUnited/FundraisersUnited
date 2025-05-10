@@ -1339,99 +1339,25 @@ nav {
 /* Contact Section */
 .contact-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 50px;
     position: relative;
     z-index: 5;
 }
 
 .contact-info {
-    background: var(--gradient-primary);
-    padding: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 45px 40px;
     border-radius: var(--border-radius);
     color: white;
     position: relative;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(67, 97, 238, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.contact-info:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none" opacity="0.1"/></svg>');
-    background-repeat: repeat;
-    z-index: 0;
-    opacity: 0.1;
-}
-
-.contact-form {
-    background-color: white;
-    padding: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(67, 97, 238, 0.05);
-}
-
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--dark-color);
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    transition: var(--transition);
-    outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
-}
-
-.form-group select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 15px;
-}
-
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    transition: var(--transition);
-    outline: none;
-    resize: vertical;
-}
-
-.contact-info {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    padding: 40px;
-    border-radius: var(--border-radius);
-    color: white;
-    position: relative;
-    overflow: hidden;
+    min-height: 550px;
 }
 
 .contact-info:before {
@@ -1459,11 +1385,27 @@ nav {
     font-size: 1.5rem;
     margin-right: 15px;
     color: white;
+    min-width: 25px;
+    text-align: center;
 }
 
 .info-item p {
     margin-bottom: 0;
     line-height: 1.5;
+    font-size: 1.1rem;
+    word-break: break-word;
+}
+
+.info-item p a {
+    color: white;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    word-break: break-word;
+    display: inline-block;
+}
+
+.info-item p a:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .social-links {
@@ -1478,12 +1420,13 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     color: white;
     transition: var(--transition);
+    font-size: 1.2rem;
 }
 
 .social-links a:hover {
@@ -1966,6 +1909,34 @@ footer:before {
     .profile-text p:last-child {
         text-align: left;
         font-size: 0.95rem;
+    }
+
+    .contact-info {
+        padding: 25px 20px;
+    }
+    
+    .info-item {
+        margin-bottom: 20px;
+    }
+    
+    .info-item i {
+        font-size: 1.2rem;
+        min-width: 20px;
+    }
+    
+    .info-item p {
+        font-size: 0.95rem;
+    }
+    
+    .social-links {
+        margin-top: 25px;
+        gap: 10px;
+    }
+    
+    .social-links a {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
     }
 }
 

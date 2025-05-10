@@ -2280,4 +2280,36 @@ main {
     .profile-text p:last-child {
         text-align: left;
     }
+}
+
+.stats h2 {
+    color: #fff !important;
+}
+
+.fixed-nav + .logo {
+    display: none !important;
+}
+
+.fixed-nav .logo {
+    min-height: 70px;
+    max-height: 90px;
+    padding: 0 0;
+}
+
+.fixed-nav .logo a {
+    font-size: 2.1rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .fixed-nav .logo a {
+        font-size: 1.5rem;
+    }
 } 

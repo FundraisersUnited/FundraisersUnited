@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (scrollHeight > headerHeight - 100) {
                 nav.classList.add('fixed-nav');
                 document.body.classList.add('scrolled');
+                header.classList.add('scrolled');
                 document.body.style.paddingTop = navHeight + 'px';
                 
                 // Set optimal size for the logo in fixed nav
@@ -108,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 nav.classList.remove('fixed-nav');
                 document.body.classList.remove('scrolled');
+                header.classList.remove('scrolled');
                 document.body.style.paddingTop = 0;
                 nav.classList.remove('slide-in');
                 

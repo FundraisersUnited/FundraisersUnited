@@ -1959,10 +1959,6 @@ footer:before {
     width: auto;
 }
 
-.fixed-nav .logo img {
-    display: none;
-}
-
 .fixed-nav .logo a {
     color: #ffffff;
     font-size: 2.5rem;
@@ -1976,17 +1972,16 @@ footer:before {
     justify-content: center;
     height: 100%;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    position: relative;
 }
 
 .fixed-nav .logo a img {
-    display: none;
+    display: block;
+    max-height: 100%;
+    width: auto;
 }
 
-/* Add content with the website name for the fixed nav logo */
 .fixed-nav .logo a:before {
-    content: 'Fundraisers United';
-    display: block;
+    content: none;
 }
 
 body.scrolled .logo:not(.fixed-nav .logo) {
@@ -2295,4 +2290,10 @@ main {
     position: relative;
     font-weight: 800;
     line-height: 1.2;
+}
+
+/* Fix for header when scrolled */
+header.scrolled,
+nav.fixed-nav + header {
+    display: none;
 } 

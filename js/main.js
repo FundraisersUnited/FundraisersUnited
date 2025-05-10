@@ -93,10 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (scrollHeight > headerHeight - 100) {
                 nav.classList.add('fixed-nav');
+                document.body.classList.add('scrolled');
                 document.body.style.paddingTop = navHeight + 'px';
                 
                 // Set optimal size for the logo in fixed nav
-                logo.style.transition = 'all 0.3s ease';
+                if (logo) {
+                    logo.style.transition = 'all 0.3s ease';
+                }
                 
                 // Only add slide-in animation once
                 if (!nav.classList.contains('slide-in')) {
@@ -104,11 +107,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else {
                 nav.classList.remove('fixed-nav');
+                document.body.classList.remove('scrolled');
                 document.body.style.paddingTop = 0;
                 nav.classList.remove('slide-in');
                 
                 // Reset logo styles when not in fixed nav
-                logo.style.transition = '';
+                if (logo) {
+                    logo.style.transition = '';
+                }
             }
         });
     }
@@ -408,6 +414,9 @@ document.addEventListener('DOMContentLoaded', function() {
         button.style.boxShadow = 'var(--shadow-md)';
         button.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         button.style.zIndex = '99';
+        button.style.overflow = 'hidden'; // Prevent content from overflowing
+        button.style.fontSize = '20px'; // Control icon size
+        button.style.textIndent = '0'; // Reset any text indent
         
         // Create SVG progress indicator
         const svgProgress = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -418,6 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
         svgProgress.style.top = '0';
         svgProgress.style.left = '0';
         svgProgress.style.transform = 'rotate(-90deg)';
+        svgProgress.style.overflow = 'visible'; // Ensure SVG is visible
         
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         const radius = 28;

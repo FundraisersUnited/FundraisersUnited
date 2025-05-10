@@ -17,6 +17,26 @@
     <meta property="og:description" content="Connect with passionate, long-term donors through our highly trained F2F fundraisers.">
     <meta property="og:image" content="images/og-image.jpg">
     <meta property="og:url" content="https://fundraisersunited.com.au">
+    <script>
+        // Initialize navigation fix on page load - this runs before main.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force check scroll position immediately
+            const checkScrollPosition = function() {
+                const header = document.querySelector('header');
+                const nav = document.querySelector('nav');
+                if (header && nav && window.pageYOffset > header.offsetHeight - 100) {
+                    nav.classList.add('fixed-nav');
+                    document.body.classList.add('scrolled');
+                    header.classList.add('scrolled');
+                    document.body.style.paddingTop = nav.offsetHeight + 'px';
+                }
+            };
+            // Check immediately and after a short delay
+            checkScrollPosition();
+            setTimeout(checkScrollPosition, 50);
+            setTimeout(checkScrollPosition, 500);
+        });
+    </script>
     <style>
         /* Inline styles for the placeholder images */
         .team-image-placeholder {

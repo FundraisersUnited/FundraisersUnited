@@ -19,6 +19,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Force scroll event after a delay to trigger fixed nav calculations
+    setTimeout(function() {
+        // Creating a synthetic scroll event
+        window.dispatchEvent(new Event('scroll'));
+        // Force layout recalculation
+        document.body.offsetHeight;
+        // Check state of navigation bar
+        const nav = document.querySelector('nav');
+        const header = document.querySelector('header');
+        if (nav && window.pageYOffset > (header ? header.offsetHeight - 100 : 100)) {
+            nav.classList.add('fixed-nav');
+        }
+    }, 200);
+    
     // Close mobile menu when clicking a link
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
@@ -103,6 +117,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     logo.style.transition = 'all 0.3s ease';
                 }
                 
+                // Force display property for fixed nav and its children
+                nav.style.display = 'flex';
+                const logoElement = document.querySelector('.fixed-nav .logo');
+                if (logoElement) {
+                    logoElement.style.display = 'flex';
+                }
+                const logoLink = document.querySelector('.fixed-nav .logo a');
+                if (logoLink) {
+                    logoLink.style.display = 'flex';
+                }
+                if (logo) {
+                    logo.style.display = 'block';
+                }
+                
                 // Only add slide-in animation once
                 if (!nav.classList.contains('slide-in')) {
                     nav.classList.add('slide-in');
@@ -114,18 +142,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.paddingTop = 0;
                 nav.classList.remove('slide-in');
                 
+                // Reset inline styles
+                nav.style.display = '';
+                const logoElement = document.querySelector('.logo');
+                if (logoElement) {
+                    logoElement.style.display = '';
+                }
+                const logoLink = document.querySelector('.logo a');
+                if (logoLink) {
+                    logoLink.style.display = '';
+                }
+                
                 // Reset logo styles when not in fixed nav
                 if (logo) {
                     logo.style.transition = '';
+                    logo.style.display = '';
                 }
             }
         };
         
-        // Check scroll position on page load
+        // Check scroll position on page load and after a slight delay to ensure DOM is fully processed
         checkScroll();
+        setTimeout(checkScroll, 100);
         
         // Check scroll position on scroll
         window.addEventListener('scroll', checkScroll);
+        
+        // Additional event listeners to ensure fixed nav works properly
+        window.addEventListener('resize', checkScroll);
+        window.addEventListener('load', checkScroll);
     }
     
     // Enhanced form validation with visual feedback

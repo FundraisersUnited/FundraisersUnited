@@ -87,7 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const navHeight = nav.offsetHeight;
     
     if (header && nav) {
-        window.addEventListener('scroll', function() {
+        // Initial check in case page is loaded scrolled down
+        const checkScroll = function() {
             const scrollHeight = window.pageYOffset;
             const headerHeight = header.offsetHeight;
             
@@ -118,7 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     logo.style.transition = '';
                 }
             }
-        });
+        };
+        
+        // Check scroll position on page load
+        checkScroll();
+        
+        // Check scroll position on scroll
+        window.addEventListener('scroll', checkScroll);
     }
     
     // Enhanced form validation with visual feedback

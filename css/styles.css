@@ -338,7 +338,7 @@ nav {
     position: relative;
     padding: 15px 0;
     margin-top: 80px;
-    background: rgba(30, 30, 44, 0.95);
+    background: rgba(30, 30, 44, 0.98);
     backdrop-filter: blur(10px);
     z-index: 100;
 }
@@ -348,16 +348,17 @@ nav {
 }
 
 .nav-links a {
-    color: white;
+    color: rgba(255, 255, 255, 0.95);
     font-weight: 500;
     position: relative;
     padding: 5px 0;
     font-size: 1.05rem;
     transition: color 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links a:not(.btn):hover {
-    color: var(--accent-light);
+    color: #ffffff;
 }
 
 .nav-links a:not(.btn)::after {
@@ -1930,7 +1931,7 @@ footer:before {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(30, 30, 44, 0.95);
+    background-color: rgba(30, 30, 44, 0.98);
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     z-index: 100;
@@ -1959,10 +1960,24 @@ footer:before {
 }
 
 .fixed-nav .logo img {
-    height: 100px;
-    width: auto;
-    max-width: 100%;
-    max-height: none;
+    display: none;
+}
+
+.fixed-nav .logo a {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-nav .logo a:after {
+    display: none;
 }
 
 .fixed-nav .nav-links {
@@ -1981,8 +1996,8 @@ footer:before {
         padding: 0 20px;
     }
     
-    .fixed-nav .logo img {
-        height: 80px;
+    .fixed-nav .logo a {
+        font-size: 1.3rem;
     }
 }
 
@@ -1996,8 +2011,8 @@ footer:before {
         margin-bottom: 10px;
     }
     
-    .fixed-nav .logo img {
-        height: 70px;
+    .fixed-nav .logo a {
+        font-size: 1.2rem;
     }
     
     .fixed-nav .nav-links {
@@ -2007,8 +2022,8 @@ footer:before {
 }
 
 @media screen and (max-width: 480px) {
-    .fixed-nav .logo img {
-        height: 60px;
+    .fixed-nav .logo a {
+        font-size: 1.1rem;
     }
 }
 

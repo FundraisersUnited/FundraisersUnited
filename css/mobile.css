@@ -10,6 +10,42 @@
 }
 
 @media (max-width: 767px) {
+    /* Hide all desktop-only elements on mobile */
+    .hero h1,
+    .hero .hero-description,
+    .nav-links,
+    .fixed-nav,
+    .logo.desktop,
+    .desktop-nav,
+    .hero .tagline.desktop,
+    .slogan-container,
+    .footer-desktop,
+    nav.fixed-nav,
+    .footer-content-desktop {
+        display: none !important;
+        height: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        content: none !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    /* Only show mobile-appropriate elements */
+    .brand-title,
+    .brand-title:after,
+    .mobile-header-fixed,
+    .mobile-nav,
+    .hero .tagline:not(.desktop) {
+        display: flex !important;
+        visibility: visible !important;
+        height: auto !important;
+        pointer-events: auto !important;
+    }
+    /* Ensure .hero .tagline is block for mobile */
+    .hero .tagline {
+        display: block !important;
+    }
     /* HERO SECTION: Initial view */
     header {
         position: relative;

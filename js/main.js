@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Toggle
+    // Mobile Navigation Toggle with improved behavior
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     if (navToggle) {
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
             navLinks.classList.toggle('active');
             
             // Change hamburger icon to X when menu is open
@@ -15,6 +16,31 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+            }
+            
+            // Ensure nav links are visible when active
+            if (navLinks.classList.contains('active')) {
+                navLinks.style.display = 'flex';
+            } else {
+                setTimeout(() => {
+                    navLinks.style.display = '';
+                }, 300); // Match transition duration
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const isClickInside = navLinks.contains(e.target) || navToggle.contains(e.target);
+            
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                
+                setTimeout(() => {
+                    navLinks.style.display = '';
+                }, 300);
             }
         });
     }

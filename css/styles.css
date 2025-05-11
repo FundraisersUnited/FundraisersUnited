@@ -403,6 +403,15 @@ nav {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: var(--transition);
+}
+
+.nav-toggle:hover {
+    color: var(--primary-color);
 }
 
 .hero {
@@ -2311,55 +2320,91 @@ main {
 @media screen and (max-width: 768px) {
     .fixed-nav {
         flex-direction: row;
-        padding: 10px 20px;
-        height: 60px;
+        padding: 10px 15px;
+        height: auto;
+        min-height: 60px;
     }
     
     .fixed-nav .logo {
-        margin-right: 15px;
-        height: 40px;
-        min-height: 40px;
-        max-height: 40px;
+        margin-right: 0;
+        height: auto;
+        min-height: auto;
+        display: flex;
+        align-items: center;
+    }
+    
+    .fixed-nav .logo a {
+        display: flex;
+        align-items: center;
     }
     
     .fixed-nav .logo a img {
-        height: 35px;
+        height: 30px;
+        margin-right: 8px;
     }
     
     .fixed-nav .logo a span {
         font-size: 1rem;
+        display: inline-block;
     }
     
     .fixed-nav .nav-links {
         justify-content: flex-end;
     }
     
-    .fixed-nav .nav-links a {
-        font-size: 0.9rem;
-        margin: 0 8px;
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     
-    .fixed-nav .nav-links .btn {
-        padding: 8px 15px;
-        font-size: 0.85rem;
+    .footer-logo img {
+        max-height: 80px !important;
+        padding: 10px;
+        margin: 0 auto 15px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .fixed-nav {
-        padding: 8px 15px;
+        padding: 8px 10px;
+        min-height: 50px;
     }
     
-    .fixed-nav .logo a {
-        font-size: 1.6rem;
+    .fixed-nav .logo a img {
+        height: 25px;
+        margin-right: 5px;
     }
     
-    .fixed-nav .nav-links a:not(.btn) {
-        display: none;
+    .fixed-nav .logo a span {
+        font-size: 0.9rem;
     }
     
-    .fixed-nav .nav-links .btn {
-        margin-left: 0;
+    .fixed-nav .nav-toggle {
+        font-size: 1.2rem;
+    }
+    
+    .footer-logo img {
+        max-height: 70px !important;
+        padding: 8px;
+    }
+    
+    /* Ensure navigation menu works properly on mobile */
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(21, 25, 30, 0.95);
+        padding: 15px;
+        z-index: 1000;
+    }
+    
+    .nav-links.active li {
+        margin: 8px 0;
     }
 }
 
@@ -2384,5 +2429,69 @@ main {
 @media screen and (max-width: 992px) {
     .fixed-nav .slogan-container {
         display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }
+    
+    .fixed-nav .nav-links {
+        margin-left: 0;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets for better mobile experience */
+    .nav-links a {
+        padding: 8px 12px;
+    }
+    
+    .nav-toggle {
+        padding: 10px;
+    }
+    
+    /* Adjust animation effects for mobile */
+    .footer-logo img {
+        animation-play-state: paused;
+    }
+    
+    /* Ensure buttons have proper tap sizing */
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile-specific transitions */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+    }
+    
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 } 

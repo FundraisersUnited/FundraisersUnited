@@ -696,7 +696,7 @@ section:nth-child(even) {
 
 .profile-image img {
     width: 100%;
-    border-radius: 50%;
+    border-radius: 10px;
     box-shadow: var(--shadow-sm);
 }
 

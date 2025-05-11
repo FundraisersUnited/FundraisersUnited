@@ -754,11 +754,10 @@ section:nth-child(even) {
 }
 
 .profile-image img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    box-shadow: var(--shadow-sm);
-    margin: 0 auto;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 15px;
 }
 
 .profile-title {
@@ -826,15 +825,25 @@ section:nth-child(even) {
 .contact h2 {
     color: var(--text-light);
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .contact-content {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    max-width: 600px;
-    margin: 0 auto;
+    gap: 25px;
+    padding: 0 15px;
+}
+
+.contact-info-wrapper {
+    min-height: 500px; /* Ensure enough height for mobile */
+    word-break: break-word; /* Prevent email from overflowing */
+}
+
+/* Make text wrap properly */
+.contact-info-wrapper a {
+    word-break: break-word;
+    display: inline-block;
 }
 
 /* Removed specific form styling as it's now inline in HTML */

@@ -304,43 +304,34 @@
                 <h2 style="color: #000000 !important;">Contact Us</h2>
                 <div class="contact-content">
                     <div class="contact-form-wrapper" style="background-color: #FFFFFF; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
-                        <h3 style="color: #1E1E2C; margin-bottom: 25px; text-align: center; font-weight: bold;">Send Us a Message</h3>
-                        <form id="contactForm" action="https://formsubmit.co/admin@fundraisersunited.com.au" method="POST" style="display: block !important;">
+                        <h3 style="color: #1E1E2C; margin-bottom: 30px; text-align: center; font-size: 2rem; font-weight: bold;">Send Us a Message</h3>
+                        <form id="contactForm" action="https://formsubmit.co/admin@fundraisersunited.com.au" method="POST" style="display: block !important; padding: 0 15px;">
                             <input type="hidden" name="_subject" value="New contact from Fundraisers United website">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://fundraisersunited.com.au/thank-you.html">
                             
-                            <div style="margin-bottom: 20px; display: block !important;">
-                                <label for="dname" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.1rem; position: relative; z-index: 10; background-color: transparent;">Your Name</label>
-                                <input type="text" id="dname" name="name" placeholder="Enter your name" required style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 15px; background-color: #ffffff !important; border: 2px solid #000000 !important; color: #000000 !important; border-radius: 8px; font-size: 18px !important; font-weight: 500 !important; box-shadow: none !important;">
+                            <div style="margin-bottom: 25px; display: block !important;">
+                                <label for="dname" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.3rem;">Name</label>
+                                <input type="text" id="dname" name="name" placeholder="Enter your name" required style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 18px; background-color: #f5f7fa !important; border: none !important; color: #555 !important; border-radius: 8px; font-size: 18px !important; font-weight: normal !important; box-shadow: none !important;">
                             </div>
                             
-                            <div style="margin-bottom: 20px; display: block !important;">
-                                <label for="demail" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.1rem; position: relative; z-index: 10; background-color: transparent;">Email Address</label>
-                                <input type="email" id="demail" name="email" placeholder="Enter your email" required style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 15px; background-color: #ffffff !important; border: 2px solid #000000 !important; color: #000000 !important; border-radius: 8px; font-size: 18px !important; font-weight: 500 !important; box-shadow: none !important;">
+                            <div style="margin-bottom: 25px; display: block !important;">
+                                <label for="demail" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.3rem;">Email</label>
+                                <input type="email" id="demail" name="email" placeholder="Enter your email" required style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 18px; background-color: #f5f7fa !important; border: none !important; color: #555 !important; border-radius: 8px; font-size: 18px !important; font-weight: normal !important; box-shadow: none !important;">
                             </div>
                             
-                            <div style="margin-bottom: 20px; display: block !important;">
-                                <label for="dorganization" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.1rem; position: relative; z-index: 10; background-color: transparent;">Organization (if applicable)</label>
-                                <input type="text" id="dorganization" name="organization" placeholder="Enter your organization" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 15px; background-color: #ffffff !important; border: 2px solid #000000 !important; color: #000000 !important; border-radius: 8px; font-size: 18px !important; font-weight: 500 !important; box-shadow: none !important;">
-                            </div>
-                            
-                            <div style="margin-bottom: 20px; display: block !important;">
-                                <label for="dinquiry" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.1rem; position: relative; z-index: 10; background-color: transparent;">Inquiry Type</label>
-                                <select id="dinquiry" name="inquiry" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 15px; background-color: #ffffff !important; border: 2px solid #000000 !important; color: #000000 !important; border-radius: 8px; font-size: 18px !important; font-weight: 500 !important; -webkit-appearance: menulist !important; -moz-appearance: menulist !important; appearance: menulist !important; box-shadow: none !important;">
-                                    <option value="charity">Charity Partnership</option>
-                                    <option value="job">Job Opportunity</option>
-                                    <option value="general">General Inquiry</option>
-                                </select>
+                            <div style="margin-bottom: 25px; display: block !important;">
+                                <label for="dorganization" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.3rem;">Organization</label>
+                                <input type="text" id="dorganization" name="organization" placeholder="Enter your organization" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 60px !important; padding: 12px 18px; background-color: #f5f7fa !important; border: none !important; color: #555 !important; border-radius: 8px; font-size: 18px !important; font-weight: normal !important; box-shadow: none !important;">
                             </div>
                             
                             <div style="margin-bottom: 30px; display: block !important;">
-                                <label for="dmessage" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.1rem; position: relative; z-index: 10; background-color: transparent;">Your Message</label>
-                                <textarea id="dmessage" name="message" rows="5" placeholder="Type your message here" required style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 150px !important; min-height: 150px !important; padding: 12px 15px; background-color: #ffffff !important; border: 2px solid #000000 !important; color: #000000 !important; border-radius: 8px; font-size: 18px !important; font-weight: 500 !important; resize: vertical !important; box-shadow: none !important;"></textarea>
+                                <label for="dmessage" style="display: block !important; margin-bottom: 10px; font-weight: bold; color: #000000 !important; font-size: 1.3rem;">Message</label>
+                                <textarea id="dmessage" name="message" rows="5" placeholder="Type your message" required style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 150px !important; min-height: 150px !important; padding: 18px; background-color: #f5f7fa !important; border: none !important; color: #555 !important; border-radius: 8px; font-size: 18px !important; font-weight: normal !important; resize: vertical !important; box-shadow: none !important;"></textarea>
                             </div>
                             
-                            <button type="submit" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: auto !important; padding: 16px 24px; background-color: #FF3333 !important; color: white !important; border: none !important; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3); transition: all 0.3s ease;">Send Message</button>
+                            <button type="submit" style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: auto !important; padding: 16px 24px; background-color: #FF3333 !important; color: white !important; border: none !important; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3); transition: all 0.3s ease; text-transform: uppercase;">SEND MESSAGE</button>
                         </form>
                     </div>
                     

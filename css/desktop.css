@@ -640,11 +640,32 @@ header.scrolled {
         display: none !important;
     }
 
+    /* Fix duplicate FUNDRAISERS UNITED text issue */
+    .hero h1 {
+        display: block !important;
+        margin-top: 0;
+        padding-top: 0;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Hide mobile elements that cause duplication */
+    header .tagline + .brand-title,
+    header h1 + .brand-title {
+        display: none !important;
+    }
+
     /* Ensure desktop elements are visible */
-    .hero h1,
     .hero .tagline,
     .hero .hero-description {
         display: block !important;
+    }
+
+    /* Position hero content properly */
+    .hero-content {
+        position: relative;
+        z-index: 5;
+        margin-top: 120px;
     }
 
     /* Hide mobile navigation */
@@ -714,8 +735,8 @@ header.scrolled {
         margin-top: 40px;
         width: 100%;
         height: auto;
-        min-height: 280px;
-        max-height: 340px;
+        min-height: 200px; /* Reduced to prevent stretching */
+        max-height: 300px; /* Reduced to prevent stretching */
         background-color: transparent;
     }
 
@@ -791,7 +812,7 @@ header.scrolled {
         width: 100%;
         position: relative;
         padding: 15px 0;
-        margin-top: 80px;
+        margin-top: 30px; /* Reduced to prevent stretching */
         background: rgba(30, 30, 44, 0.98);
         backdrop-filter: blur(10px);
         z-index: 100;
@@ -1040,6 +1061,173 @@ header.scrolled {
             opacity: 1;
             transform: translateY(0);
         }
+    }
+
+    /* Footer positioning fixes */
+    footer {
+        position: relative;
+        z-index: 2;
+        background-color: var(--dark-color);
+        padding: 60px 0 30px;
+        color: white;
+    }
+
+    footer .container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 3;
+        align-items: start;
+    }
+
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-logo img {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo p {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .footer-links h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: white;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-links h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        padding-left: 15px;
+    }
+
+    .footer-links a:before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--primary-color);
+        transition: transform 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: white;
+    }
+
+    .footer-links a:hover:before {
+        transform: translateX(3px);
+    }
+
+    .footer-contact h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: white;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-contact h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+    }
+
+    .contact-info p {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.5;
+    }
+
+    .contact-info i {
+        color: var(--primary-color);
+        margin-right: 15px;
+        font-size: 1.2rem;
+        margin-top: 3px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 51, 51, 0.3);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
     }
 
     /* Hide the regular nav when fixed nav is showing */

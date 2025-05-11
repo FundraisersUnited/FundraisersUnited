@@ -239,6 +239,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         navLinksElement.style.visibility = 'visible';
                         navLinksElement.style.opacity = '1';
                     }
+                } else {
+                    // On mobile, hide header elements to prevent duplication
+                    const brandTitle = document.querySelector('.brand-title');
+                    const tagline = document.querySelector('header .tagline');
+                    
+                    if (brandTitle) brandTitle.style.display = 'none';
+                    if (tagline) tagline.style.display = 'none';
                 }
             } else {
                 // Reset to default
@@ -285,6 +292,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     navLinksElement.style.display = '';
                     navLinksElement.style.visibility = '';
                     navLinksElement.style.opacity = '';
+                }
+                
+                // Show mobile elements again when scrolled back to top
+                if (window.innerWidth <= 767) {
+                    const brandTitle = document.querySelector('.brand-title');
+                    const tagline = document.querySelector('header .tagline');
+                    
+                    if (brandTitle) brandTitle.style.display = 'flex';
+                    if (tagline) tagline.style.display = 'block';
                 }
             }
         }
@@ -768,19 +784,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     tagline.style.display = 'block';
                     
                     // Fix scrolling issues by hiding duplicates
-                    if (window.pageYOffset > 100) {
-                        brandTitle.style.display = 'none';
-                        tagline.style.display = 'none';
-                    } else {
-                        brandTitle.style.display = 'flex';
-                        tagline.style.display = 'block';
-                    }
+                    // This is now handled in the checkScroll function
                 }
             } else {
                 // Desktop view
                 hero.style.position = 'absolute';
-                hero.style.alignItems = 'center'; // Center for desktop
-                hero.style.textAlign = 'center'; // Center for desktop
+                hero.style.alignItems = 'center'; 
+                hero.style.textAlign = 'center';
                 hero.style.width = '100%';
                 hero.style.height = '100%';
                 
@@ -788,9 +798,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (tagline) {
                     tagline.style.marginTop = '';
                 }
-                if (brandTitle) {
-                    brandTitle.style.display = 'none';
-                }
+                
+                // Ensure proper visibility of desktop elements
+                const heroH1 = document.querySelector('.hero h1');
+                const heroTagline = document.querySelector('.hero .tagline');
+                const heroDescription = document.querySelector('.hero-description');
+                
+                if (heroH1) heroH1.style.display = 'block';
+                if (heroTagline) heroTagline.style.display = 'block';
+                if (heroDescription) heroDescription.style.display = 'block';
+                
+                // Hide mobile-specific elements
+                if (brandTitle) brandTitle.style.display = 'none';
             }
         }
     }

@@ -1477,17 +1477,19 @@ footer:before {
 }
 
 .footer-logo img {
-    max-height: 300px;
-    min-height: 220px;
-    width: auto;
-    max-width: 90%;
-    margin-bottom: 20px;
-    filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 51, 51, 0.5));
+    max-height: 220px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    aspect-ratio: 1.8 / 1 !important;
+    margin-bottom: 20px !important;
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 51, 51, 0.5)) !important;
     padding: 15px;
     border-radius: 15px;
-    background: rgba(21, 25, 30, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation: footerLogoPulse 5s ease-in-out infinite alternate;
+    display: block !important;
 }
 
 @keyframes footerLogoPulse {

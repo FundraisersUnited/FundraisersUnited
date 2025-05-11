@@ -10,27 +10,145 @@
 }
 
 @media (max-width: 767px) {
-    /* Top hero section layout and transition improvements */
+    /* HERO SECTION: Initial view */
     header {
         position: relative;
         z-index: 10;
-        transition: all 0.3s ease;
         min-height: 550px;
+        background: var(--dark-color);
     }
-    
-    /* Improve the transition between header and content */
-    body:not(.scrolled) main {
-        margin-top: -20px;
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 40px;
+        padding-bottom: 0;
+        min-height: 400px;
+        background: none;
+    }
+    .brand-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 0 10px 0;
         position: relative;
-        z-index: 5;
-        background: #fff;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.05);
-        padding-top: 30px;
-        transition: all 0.3s ease;
     }
-    
+    .brand-title h2 {
+        text-align: center;
+        color: white;
+        font-weight: 800;
+        line-height: 1;
+        font-family: var(--font-primary);
+        letter-spacing: 1px;
+        font-size: 2.1rem;
+        margin: 0;
+        padding: 0;
+    }
+    /* Only one red line below UNITED */
+    .brand-title:after {
+        content: '';
+        display: block;
+        width: 90px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: 12px auto 0 auto;
+        border-radius: 2px;
+    }
+    /* Tagline always below the red line */
+    .hero .tagline {
+        margin-top: 18px;
+        color: white;
+        font-size: 1.1rem;
+        opacity: 0.95;
+        text-align: center;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        display: block;
+    }
+    /* Hide desktop elements on mobile */
+    .hero h1,
+    .hero .hero-description {
+        display: none !important;
+    }
+    /* Hide nav-links on mobile */
+    .nav-links {
+        display: none !important;
+    }
+    /* Hide fixed nav on mobile */
+    .fixed-nav {
+        display: none !important;
+    }
+    /* Hide .brand-title and tagline in hero when scrolled */
+    body.scrolled .hero .brand-title,
+    body.scrolled .hero .tagline {
+        display: none !important;
+    }
+    /* FIXED HEADER: Only show when scrolled */
+    .mobile-header-fixed {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--dark-color);
+        z-index: 999;
+        padding: 10px 0 6px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+    }
+    body.scrolled .mobile-header-fixed {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+    .mobile-header-fixed .brand-title {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    .mobile-header-fixed .brand-title h2 {
+        font-size: 1.3rem;
+        margin: 0;
+        padding: 0;
+    }
+    .mobile-header-fixed .brand-title:after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary-color);
+        margin: 8px auto 0 auto;
+        border-radius: 2px;
+    }
+    .mobile-header-fixed .tagline {
+        color: white;
+        font-size: 0.95rem;
+        margin-top: 8px;
+        text-align: center;
+        font-weight: 500;
+        opacity: 0.9;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        display: block;
+    }
+    /* Hide .mobile-header-fixed when not scrolled */
+    body:not(.scrolled) .mobile-header-fixed {
+        display: none !important;
+    }
+    /* Remove extra red lines from other elements */
+    .brand-title h2:after,
+    .brand-title h2:before {
+        display: none !important;
+        content: none !important;
+    }
+
     /* Mobile navigation styles */
     .mobile-nav {
         display: flex;
@@ -68,62 +186,6 @@
         color: var(--primary-color);
     }
 
-    /* Brand title styles - updated for better visibility */
-    .brand-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        position: relative;
-        margin-top: 20px;
-        margin-bottom: 25px;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    /* Change the h2 to match the current structure */
-    .brand-title h2 {
-        text-align: center;
-        color: white;
-        font-weight: 800;
-        line-height: 1;
-        font-family: var(--font-primary);
-        letter-spacing: 1px;
-    }
-
-    .brand-title h2:first-child {
-        font-size: 1.8rem;
-        margin-bottom: 0;
-    }
-
-    .brand-title h2:last-child {
-        font-size: 2.2rem; /* Make UNITED larger */
-        margin-top: -2px; /* Move UNITED up to connect with FUNDRAISERS */
-        font-weight: 900; /* Make it bolder */
-    }
-
-    /* Add red line separator between title and tagline */
-    .brand-title:after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background-color: var(--primary-color);
-        margin: 15px auto 0;
-        border-radius: 2px;
-    }
-
-    /* Properly space the tagline from the red line */
-    header .tagline {
-        margin-top: 35px; /* Increased to create more space below the red line */
-        display: block;
-        color: white;
-        font-size: 1.2rem;
-        opacity: 0.9;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
     /* Main logo adjustments */
     .logo {
         min-height: auto;
@@ -135,21 +197,6 @@
     .logo img {
         max-width: 85%;
         transition: all 0.3s ease;
-    }
-
-    /* Hide desktop elements on mobile */
-    .nav-links {
-        display: none;
-    }
-
-    .fixed-nav {
-        display: none !important; /* Added !important to ensure it's hidden on mobile */
-    }
-
-    /* Hide desktop-only elements on mobile */
-    header h1,
-    header .hero-description {
-        display: none;
     }
 
     /* Make the hero buttons more prominent on mobile */

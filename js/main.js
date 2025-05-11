@@ -184,18 +184,17 @@ document.addEventListener('DOMContentLoaded', function() {
         function checkScroll() {
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             const isMobile = window.innerWidth <= 767;
+            const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
+            const heroBrandTitle = document.querySelector('.hero .brand-title');
+            const heroTagline = document.querySelector('.hero .tagline');
             
-            if (scrollPosition > 100) { // Fixed threshold instead of dynamic
-                // Apply fixed nav
+            if (scrollPosition > 100) {
                 nav.classList.add('fixed-nav');
                 document.body.classList.add('scrolled');
                 header.classList.add('scrolled');
                 
-                // Only adjust padding top on desktop
                 if (!isMobile) {
                     document.body.style.paddingTop = nav.offsetHeight + 'px';
-                    
-                    // Force display properties inline for desktop only
                     nav.style.display = 'flex';
                     nav.style.visibility = 'visible';
                     nav.style.opacity = '1';
@@ -239,28 +238,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         navLinksElement.style.visibility = 'visible';
                         navLinksElement.style.opacity = '1';
                     }
+                    
+                    // Hide hero brand-title and tagline, show fixed mobile header
+                    if (heroBrandTitle) heroBrandTitle.style.display = 'none';
+                    if (heroTagline) heroTagline.style.display = 'none';
+                    if (mobileHeaderFixed) mobileHeaderFixed.style.display = 'flex';
                 } else {
-                    // On mobile, hide header elements to prevent duplication
-                    const brandTitle = document.querySelector('.brand-title');
-                    const tagline = document.querySelector('header .tagline');
-                    
-                    if (brandTitle) brandTitle.style.display = 'none';
-                    if (tagline) tagline.style.display = 'none';
-                    
-                    // Show the fixed mobile header
-                    const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
-                    if (mobileHeaderFixed) {
-                        mobileHeaderFixed.style.display = 'flex';
-                    }
+                    // Hide hero brand-title and tagline, show fixed mobile header
+                    if (heroBrandTitle) heroBrandTitle.style.display = 'none';
+                    if (heroTagline) heroTagline.style.display = 'none';
+                    if (mobileHeaderFixed) mobileHeaderFixed.style.display = 'flex';
                 }
             } else {
-                // Reset to default
                 nav.classList.remove('fixed-nav');
                 document.body.classList.remove('scrolled');
                 header.classList.remove('scrolled');
                 document.body.style.paddingTop = '0';
-                
-                // Reset inline styles
                 nav.style.display = '';
                 nav.style.visibility = '';
                 nav.style.opacity = '';
@@ -300,19 +293,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     navLinksElement.style.opacity = '';
                 }
                 
-                // Show mobile elements again when scrolled back to top
-                if (window.innerWidth <= 767) {
-                    const brandTitle = document.querySelector('.brand-title');
-                    const tagline = document.querySelector('header .tagline');
-                    
-                    if (brandTitle) brandTitle.style.display = 'flex';
-                    if (tagline) tagline.style.display = 'block';
-                    
-                    // Hide the fixed mobile header
-                    const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
-                    if (mobileHeaderFixed) {
-                        mobileHeaderFixed.style.display = 'none';
-                    }
+                if (isMobile) {
+                    // Show hero brand-title and tagline, hide fixed mobile header
+                    if (heroBrandTitle) heroBrandTitle.style.display = 'flex';
+                    if (heroTagline) heroTagline.style.display = 'block';
+                    if (mobileHeaderFixed) mobileHeaderFixed.style.display = 'none';
                 }
             }
         }

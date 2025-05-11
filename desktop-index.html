@@ -269,66 +269,106 @@
             <div class="container">
                 <h2>Contact Us</h2>
                 <div class="contact-content">
-                    <div class="contact-form">
+                    <div class="contact-form-wrapper" style="background-color: #FFFFFF; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #1E1E2C; margin-bottom: 25px; text-align: center;">Send Us a Message</h3>
                         <form id="contactForm" action="https://formsubmit.co/Admin@fundraisersunited.com.au" method="POST">
                             <input type="hidden" name="_subject" value="New contact from Fundraisers United website">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://fundraisersunited.com.au/thank-you.html">
                             
-                            <div class="form-group" style="margin-bottom: 25px; position: relative;">
-                                <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: white; opacity: 1; font-size: 1.1rem;">Your Name</label>
-                                <input type="text" id="name" name="name" required style="width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 8px; font-size: 16px;">
+                            <div style="margin-bottom: 20px;">
+                                <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Your Name</label>
+                                <input type="text" id="name" name="name" required style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                             </div>
-                            <div class="form-group" style="margin-bottom: 25px; position: relative;">
-                                <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: white; opacity: 1; font-size: 1.1rem;">Email Address</label>
-                                <input type="email" id="email" name="email" required style="width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 8px; font-size: 16px;">
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Email Address</label>
+                                <input type="email" id="email" name="email" required style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                             </div>
-                            <div class="form-group" style="margin-bottom: 25px; position: relative;">
-                                <label for="organization" style="display: block; margin-bottom: 8px; font-weight: 600; color: white; opacity: 1; font-size: 1.1rem;">Organization (if applicable)</label>
-                                <input type="text" id="organization" name="organization" style="width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 8px; font-size: 16px;">
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label for="organization" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Organization (if applicable)</label>
+                                <input type="text" id="organization" name="organization" style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                             </div>
-                            <div class="form-group" style="margin-bottom: 25px; position: relative;">
-                                <label for="inquiry-type" style="display: block; margin-bottom: 8px; font-weight: 600; color: white; opacity: 1; font-size: 1.1rem;">Inquiry Type</label>
-                                <select id="inquiry-type" name="inquiry-type" style="width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 8px; font-size: 16px;">
-                                    <option value="charity" style="background-color: #333; color: white;">Charity Partnership</option>
-                                    <option value="job" style="background-color: #333; color: white;">Job Opportunity</option>
-                                    <option value="general" style="background-color: #333; color: white;">General Inquiry</option>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label for="inquiry-type" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Inquiry Type</label>
+                                <select id="inquiry-type" name="inquiry-type" style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                                    <option value="charity">Charity Partnership</option>
+                                    <option value="job">Job Opportunity</option>
+                                    <option value="general">General Inquiry</option>
                                 </select>
                             </div>
-                            <div class="form-group" style="margin-bottom: 25px; position: relative;">
-                                <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: white; opacity: 1; font-size: 1.1rem;">Your Message</label>
-                                <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 14px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); color: white; border-radius: 8px; font-size: 16px; min-height: 140px; resize: vertical;"></textarea>
+                            
+                            <div style="margin-bottom: 30px;">
+                                <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Your Message</label>
+                                <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; min-height: 120px; resize: vertical; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);"></textarea>
                             </div>
-                            <button type="submit" class="btn-primary" style="width: 100%; padding: 16px; background-color: #FF3333; color: white; border: none; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer;">Send Message</button>
+                            
+                            <button type="submit" style="width: 100%; padding: 14px 20px; background-color: #FF3333; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3); transition: all 0.3s ease;">Send Message</button>
                         </form>
                     </div>
-                    <div class="contact-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Melbourne, Victoria, 3000<br>Australia</p>
+                    
+                    <div class="contact-info-wrapper" style="background-color: #1E1E2C; padding: 40px; border-radius: 10px; color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: white; margin-bottom: 25px;">Get In Touch</h3>
+                        
+                        <div style="margin-bottom: 25px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-map-marker-alt" style="color: #FF3333; font-size: 1.2rem; margin-right: 15px; margin-top: 5px;"></i>
+                            <div>
+                                <p style="margin: 0; font-weight: 500;">Our Location</p>
+                                <p style="margin: 5px 0 0 0; opacity: 0.9;">Melbourne, Victoria, 3000<br>Australia</p>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone"></i>
-                            <p>+61 448 573 251</p>
+                        
+                        <div style="margin-bottom: 25px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-phone" style="color: #FF3333; font-size: 1.2rem; margin-right: 15px; margin-top: 5px;"></i>
+                            <div>
+                                <p style="margin: 0; font-weight: 500;">Phone Number</p>
+                                <p style="margin: 5px 0 0 0; opacity: 0.9;"><a href="tel:+61448573251" style="color: white; text-decoration: none;">+61 448 573 251</a></p>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <p><a href="mailto:Admin@fundraisersunited.com.au">Admin@fundraisersunited.com.au</a></p>
+                        
+                        <div style="margin-bottom: 25px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-envelope" style="color: #FF3333; font-size: 1.2rem; margin-right: 15px; margin-top: 5px;"></i>
+                            <div>
+                                <p style="margin: 0; font-weight: 500;">Email Address</p>
+                                <p style="margin: 5px 0 0 0; opacity: 0.9;"><a href="mailto:Admin@fundraisersunited.com.au" style="color: white; text-decoration: none;">Admin@fundraisersunited.com.au</a></p>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-globe"></i>
-                            <p><a href="https://www.fundraisersunited.com.au" target="_blank">www.fundraisersunited.com.au</a></p>
+                        
+                        <div style="margin-bottom: 25px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-globe" style="color: #FF3333; font-size: 1.2rem; margin-right: 15px; margin-top: 5px;"></i>
+                            <div>
+                                <p style="margin: 0; font-weight: 500;">Website</p>
+                                <p style="margin: 5px 0 0 0; opacity: 0.9;"><a href="https://www.fundraisersunited.com.au" target="_blank" style="color: white; text-decoration: none;">www.fundraisersunited.com.au</a></p>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-id-card"></i>
-                            <p>ABN: 52 686 198 023</p>
+                        
+                        <div style="margin-bottom: 35px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-id-card" style="color: #FF3333; font-size: 1.2rem; margin-right: 15px; margin-top: 5px;"></i>
+                            <div>
+                                <p style="margin: 0; font-weight: 500;">ABN</p>
+                                <p style="margin: 5px 0 0 0; opacity: 0.9;">52 686 198 023</p>
+                            </div>
                         </div>
-                        <div class="social-links">
-                            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        
+                        <div style="margin-top: 35px;">
+                            <p style="margin-bottom: 15px; font-weight: 500;">Connect With Us</p>
+                            <div style="display: flex; gap: 15px;">
+                                <a href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); color: white; border-radius: 50%; transition: all 0.3s ease; text-decoration: none;">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); color: white; border-radius: 50%; transition: all 0.3s ease; text-decoration: none;">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); color: white; border-radius: 50%; transition: all 0.3s ease; text-decoration: none;">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); color: white; border-radius: 50%; transition: all 0.3s ease; text-decoration: none;">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

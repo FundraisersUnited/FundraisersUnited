@@ -10,6 +10,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        /* Ensure all form elements display properly */
+        input, select, textarea, button {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Fix select elements */
+        select {
+            appearance: auto !important;
+            -webkit-appearance: menulist !important;
+            -moz-appearance: menulist !important;
+        }
+        
+        /* Fix form wrapper */
+        .contact-form-wrapper form {
+            display: block !important;
+        }
+        
+        /* Fix labels */
+        label {
+            display: block !important;
+            margin-bottom: 8px !important;
+        }
+        
+        /* Fix textarea */
+        textarea {
+            min-height: 120px !important;
+            resize: vertical !important;
+        }
+    </style>
 </head>
 <body>
     <div class="nav-container">
@@ -293,8 +327,8 @@
                             </div>
                             
                             <div style="margin-bottom: 20px;">
-                                <label for="inquiry-type" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Inquiry Type</label>
-                                <select id="inquiry-type" name="inquiry-type" style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                                <label for="inquiry" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Inquiry Type</label>
+                                <select id="inquiry" name="inquiry" style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); appearance: auto;">
                                     <option value="charity">Charity Partnership</option>
                                     <option value="job">Job Opportunity</option>
                                     <option value="general">General Inquiry</option>
@@ -333,7 +367,7 @@
                             <i class="fas fa-envelope" style="color: #FF3333; font-size: 1.2rem; margin-right: 15px; margin-top: 5px;"></i>
                             <div>
                                 <p style="margin: 0; font-weight: 500;">Email Address</p>
-                                <p style="margin: 5px 0 0 0; opacity: 0.9;"><a href="mailto:Admin@fundraisersunited.com.au" style="color: white; text-decoration: none; word-break: break-word;">Admin@fundraisersunited.com.au</a></p>
+                                <p style="margin: 5px 0 0 0; opacity: 0.9;"><a href="mailto:admin@fundraisersunited.com.au" style="color: white; text-decoration: none; word-break: break-word;">admin@fundraisersunited.com.au</a></p>
                             </div>
                         </div>
                         

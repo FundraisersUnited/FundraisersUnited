@@ -346,4 +346,26 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Run the fix on page load
     fixContactForm();
+    
+    // Form display and functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure contact form fields are visible
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            const formElements = contactForm.querySelectorAll('input, select, textarea');
+            formElements.forEach(el => {
+                // Ensure proper styling for form elements
+                el.style.display = 'block';
+                el.style.width = '100%';
+                el.style.boxSizing = 'border-box';
+                
+                // Force select elements to show properly
+                if (el.tagName === 'SELECT') {
+                    el.style.appearance = 'auto';
+                    el.style.webkitAppearance = 'menulist';
+                    el.style.mozAppearance = 'menulist';
+                }
+            });
+        }
+    });
 }); 

@@ -45,73 +45,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // FIXED NAV: Force the fixed navigation to show immediately when page loads if scrolled
-    function forceShowFixedNav() {
-        const header = document.querySelector('header');
-        const nav = document.querySelector('nav');
-        
-        if (header && nav) {
-            const scrollHeight = window.pageYOffset;
-            const headerHeight = header.offsetHeight;
+    const header = document.querySelector('header');
+    const nav = document.querySelector('header > nav'); // More specific to the main nav
+    const body = document.body;
+
+    // Function to check scroll position and toggle classes
+    function checkScroll() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const isMobile = window.innerWidth <= 767;
+
+        if (scrollPosition > 50) { // Adjusted threshold for quicker response
+            body.classList.add('scrolled');
+            if (header) header.classList.add('scrolled'); // If needed for header-specific transitions
             
-            if (scrollHeight > 100) { // Simplified condition
-                nav.classList.add('fixed-nav');
-                document.body.classList.add('scrolled');
-                header.classList.add('scrolled');
-                document.body.style.paddingTop = nav.offsetHeight + 'px';
-                
-                // Force display properties
-                nav.style.display = 'flex';
-                nav.style.visibility = 'visible';
-                nav.style.opacity = '1';
-                
-                // Logo elements
-                const logoElement = nav.querySelector('.logo');
-                const logoLink = nav.querySelector('.logo a');
-                const logoImg = nav.querySelector('.logo img');
-                
-                if (logoElement) {
-                    logoElement.style.display = 'flex';
-                    logoElement.style.visibility = 'visible';
-                    logoElement.style.opacity = '1';
-                }
-                
-                if (logoLink) {
-                    logoLink.style.display = 'flex';
-                    logoLink.style.visibility = 'visible';
-                    logoLink.style.opacity = '1';
-                }
-                
-                if (logoImg) {
-                    logoImg.style.display = 'block';
-                    logoImg.style.visibility = 'visible';
-                    logoImg.style.opacity = '1';
-                }
-                
-                // Slogan container
-                const sloganContainer = nav.querySelector('.slogan-container');
-                if (sloganContainer) {
-                    sloganContainer.style.display = 'flex';
-                    sloganContainer.style.visibility = 'visible';
-                    sloganContainer.style.opacity = '1';
-                }
-                
-                // Links
-                const navLinksElement = nav.querySelector('.nav-links');
-                if (navLinksElement) {
-                    navLinksElement.style.display = 'flex';
-                    navLinksElement.style.visibility = 'visible';
-                    navLinksElement.style.opacity = '1';
-                }
+            if (!isMobile && nav) {
+                // Desktop fixed nav logic (already handled by CSS .fixed-nav on body.scrolled nav)
+                // Ensure main <nav> gets .fixed-nav for desktop CSS to apply if not already there
+                nav.classList.add('fixed-nav'); 
+                body.style.paddingTop = nav.offsetHeight + 'px';
+            }
+        } else {
+            body.classList.remove('scrolled');
+            if (header) header.classList.remove('scrolled');
+            
+            if (!isMobile && nav) {
+                nav.classList.remove('fixed-nav');
+                body.style.paddingTop = '0';
             }
         }
     }
-    
-    // Run immediately and after a short delay to ensure it catches
-    forceShowFixedNav();
-    setTimeout(forceShowFixedNav, 100);
-    setTimeout(forceShowFixedNav, 500);
-    setTimeout(forceShowFixedNav, 1000);
+
+    // Initial setup for responsive layout
+    function setupResponsiveLayout() {
+        const isMobile = window.innerWidth <= 767;
+        // The CSS now handles initial visibility based on media queries and :not(.scrolled)
+        // This function might be simplified or used for dynamic JS-driven adjustments if any remain
+        checkScroll(); // Apply scroll state immediately on load/resize
+    }
+
+    // Event Listeners
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', setupResponsiveLayout);
+    window.addEventListener('load', setupResponsiveLayout);
+
+    // Initial call to set things up correctly
+    setupResponsiveLayout();
     
     // Close mobile menu when clicking a link
     const navItems = document.querySelectorAll('.nav-links a');
@@ -172,162 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         requestAnimationFrame(animation);
-    }
-    
-    // Add fixed navigation on scroll with animation - completely revised
-    const header = document.querySelector('header');
-    const nav = document.querySelector('nav');
-    const logo = document.querySelector('.logo img');
-    
-    if (header && nav) {
-        // Simplified and more reliable scroll check function
-        function checkScroll() {
-            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            const isMobile = window.innerWidth <= 767;
-            const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
-            const heroBrandTitle = document.querySelector('.hero .brand-title');
-            const heroTagline = document.querySelector('.hero .tagline');
-            
-            if (scrollPosition > 100) {
-                nav.classList.add('fixed-nav');
-                document.body.classList.add('scrolled');
-                header.classList.add('scrolled');
-                
-                if (!isMobile) {
-                    document.body.style.paddingTop = nav.offsetHeight + 'px';
-                    nav.style.display = 'flex';
-                    nav.style.visibility = 'visible';
-                    nav.style.opacity = '1';
-                    nav.style.zIndex = '9999';
-                    
-                    // Logo elements
-                    const logoElement = nav.querySelector('.logo');
-                    const logoLink = nav.querySelector('.logo a');
-                    const logoImg = nav.querySelector('.logo img');
-                    
-                    if (logoElement) {
-                        logoElement.style.display = 'flex';
-                        logoElement.style.visibility = 'visible';
-                        logoElement.style.opacity = '1';
-                    }
-                    
-                    if (logoLink) {
-                        logoLink.style.display = 'flex';
-                        logoLink.style.visibility = 'visible';
-                        logoLink.style.opacity = '1';
-                    }
-                    
-                    if (logoImg) {
-                        logoImg.style.display = 'block';
-                        logoImg.style.visibility = 'visible';
-                        logoImg.style.opacity = '1';
-                    }
-                    
-                    // Slogan container
-                    const sloganContainer = nav.querySelector('.slogan-container');
-                    if (sloganContainer) {
-                        sloganContainer.style.display = 'flex';
-                        sloganContainer.style.visibility = 'visible';
-                        sloganContainer.style.opacity = '1';
-                    }
-                    
-                    // Nav links
-                    const navLinksElement = nav.querySelector('.nav-links');
-                    if (navLinksElement) {
-                        navLinksElement.style.display = 'flex';
-                        navLinksElement.style.visibility = 'visible';
-                        navLinksElement.style.opacity = '1';
-                    }
-                    
-                    // Hide hero brand-title and tagline, show fixed mobile header
-                    if (heroBrandTitle) heroBrandTitle.style.display = 'none';
-                    if (heroTagline) heroTagline.style.display = 'none';
-                    if (mobileHeaderFixed) mobileHeaderFixed.style.display = 'flex';
-                } else {
-                    // Hide hero brand-title and tagline, show fixed mobile header
-                    if (heroBrandTitle) heroBrandTitle.style.display = 'none';
-                    if (heroTagline) heroTagline.style.display = 'none';
-                    if (mobileHeaderFixed) mobileHeaderFixed.style.display = 'flex';
-                }
-            } else {
-                nav.classList.remove('fixed-nav');
-                document.body.classList.remove('scrolled');
-                header.classList.remove('scrolled');
-                document.body.style.paddingTop = '0';
-                nav.style.display = '';
-                nav.style.visibility = '';
-                nav.style.opacity = '';
-                
-                const logoElement = nav.querySelector('.logo');
-                if (logoElement) {
-                    logoElement.style.display = '';
-                    logoElement.style.visibility = '';
-                    logoElement.style.opacity = '';
-                }
-                
-                const logoLink = nav.querySelector('.logo a');
-                if (logoLink) {
-                    logoLink.style.display = '';
-                    logoLink.style.visibility = '';
-                    logoLink.style.opacity = '';
-                }
-                
-                if (logo) {
-                    logo.style.display = '';
-                    logo.style.visibility = '';
-                    logo.style.opacity = '';
-                }
-                
-                // Reset slogan container
-                const sloganContainer = nav.querySelector('.slogan-container');
-                if (sloganContainer) {
-                    sloganContainer.style.display = '';
-                    sloganContainer.style.visibility = '';
-                    sloganContainer.style.opacity = '';
-                }
-                
-                const navLinksElement = nav.querySelector('.nav-links');
-                if (navLinksElement) {
-                    navLinksElement.style.display = '';
-                    navLinksElement.style.visibility = '';
-                    navLinksElement.style.opacity = '';
-                }
-                
-                if (isMobile) {
-                    // Show hero brand-title and tagline, hide fixed mobile header
-                    if (heroBrandTitle) heroBrandTitle.style.display = 'flex';
-                    if (heroTagline) heroTagline.style.display = 'block';
-                    if (mobileHeaderFixed) mobileHeaderFixed.style.display = 'none';
-                }
-            }
-        }
-        
-        // Check initial scroll position
-        checkScroll();
-        
-        // Add scroll listener with throttling to improve performance
-        let scrollTimeout;
-        window.addEventListener('scroll', function() {
-            if (!scrollTimeout) {
-                scrollTimeout = setTimeout(function() {
-                    checkScroll();
-                    scrollTimeout = null;
-                }, 10); // Small delay to throttle
-            }
-        });
-        
-        // Also check on window resize and load
-        window.addEventListener('resize', checkScroll);
-        window.addEventListener('load', checkScroll);
-        
-        // Create synthetic scroll events to force the check
-        setTimeout(function() {
-            window.dispatchEvent(new Event('scroll'));
-        }, 200);
-        
-        setTimeout(function() {
-            window.dispatchEvent(new Event('scroll'));
-        }, 1000);
     }
     
     // Enhanced form validation with visual feedback
@@ -753,102 +575,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run the function on scroll and page load
     window.addEventListener('scroll', updateMobileNavActiveState);
     window.addEventListener('load', updateMobileNavActiveState);
-    
-    // Fix hero section layout for both desktop and mobile
-    function setupResponsiveLayout() {
-        const hero = document.querySelector('.hero');
-        const header = document.querySelector('header');
-        const tagline = document.querySelector('header .tagline');
-        const brandTitle = document.querySelector('header .brand-title');
-        const mainContent = document.querySelector('main');
-        const isMobile = window.innerWidth <= 768;
-        
-        if (hero && header) {
-            // Make hero visible
-            hero.style.display = 'flex';
-            
-            // Apply appropriate positioning based on device
-            if (isMobile) {
-                // Mobile view
-                hero.style.position = 'relative';
-                hero.style.alignItems = 'center';
-                hero.style.textAlign = 'center';
-                header.style.minHeight = '550px';
-                
-                // Set up smooth transition from header to main content
-                if (mainContent) {
-                    mainContent.style.position = 'relative';
-                    mainContent.style.zIndex = '5';
-                    
-                    if (!document.body.classList.contains('scrolled')) {
-                        mainContent.style.marginTop = '-20px';
-                        mainContent.style.borderTopLeftRadius = '20px';
-                        mainContent.style.borderTopRightRadius = '20px';
-                        mainContent.style.boxShadow = '0 -10px 20px rgba(0, 0, 0, 0.05)';
-                        mainContent.style.paddingTop = '30px';
-                    }
-                }
-                
-                // Ensure proper spacing between brand title and tagline
-                if (brandTitle && tagline) {
-                    // Properly position tagline below the red line
-                    tagline.style.marginTop = '35px';
-                    tagline.style.display = 'block';
-                }
-                
-                // Set up the fixed mobile header that appears when scrolling
-                const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
-                if (mobileHeaderFixed) {
-                    if (document.body.classList.contains('scrolled')) {
-                        mobileHeaderFixed.style.display = 'flex';
-                    } else {
-                        mobileHeaderFixed.style.display = 'none';
-                    }
-                }
-            } else {
-                // Desktop view
-                hero.style.position = 'absolute';
-                hero.style.alignItems = 'center'; 
-                hero.style.textAlign = 'center';
-                hero.style.width = '100%';
-                hero.style.height = '100%';
-                
-                // Reset any mobile-specific styles
-                if (tagline) {
-                    tagline.style.marginTop = '';
-                }
-                
-                // Ensure proper visibility of desktop elements
-                const heroH1 = document.querySelector('.hero h1');
-                const heroTagline = document.querySelector('.hero .tagline');
-                const heroDescription = document.querySelector('.hero-description');
-                
-                if (heroH1) heroH1.style.display = 'block';
-                if (heroTagline) heroTagline.style.display = 'block';
-                if (heroDescription) heroDescription.style.display = 'block';
-                
-                // Hide mobile-specific elements
-                if (brandTitle) brandTitle.style.display = 'none';
-                
-                // Reset main content styles for desktop
-                if (mainContent) {
-                    mainContent.style.marginTop = '';
-                    mainContent.style.borderTopLeftRadius = '';
-                    mainContent.style.borderTopRightRadius = '';
-                    mainContent.style.boxShadow = '';
-                    mainContent.style.paddingTop = '';
-                }
-                
-                // Hide mobile fixed header on desktop
-                const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
-                if (mobileHeaderFixed) {
-                    mobileHeaderFixed.style.display = 'none';
-                }
-            }
-        }
-    }
-    
-    // Run layout fixes on page load and resize
-    window.addEventListener('load', setupResponsiveLayout);
-    window.addEventListener('resize', setupResponsiveLayout);
 }); 

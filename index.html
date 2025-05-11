@@ -258,20 +258,18 @@
     </style>
 </head>
 <body>
-    <header style="background: linear-gradient(rgba(33, 37, 41, 0.85), rgba(33, 37, 41, 0.85)), linear-gradient(135deg, #4361ee, #7209b7) no-repeat center center/cover;">
-        <nav class="fixed-nav">
+    <header>
+        <nav>
             <div class="logo">
-                <a href="#">
+                <a href="#home">
                     <img src="images/Logo_FRU Brandmark.png" alt="Fundraisers United Logo">
-                    <span>Fundraisers United</span>
                 </a>
             </div>
-            <div class="slogan-container">
-                <p class="tagline">Dignified Fundraisers Make Quality Donors</p>
+            <div class="brand-title">
+                <h2>FUNDRAISERS</h2>
+                <h2>UNITED</h2>
             </div>
-            <div class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <p class="tagline">Dignified Fundraisers Make Quality Donors</p>
             <ul class="nav-links">
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Our Services</a></li>
@@ -281,28 +279,33 @@
                 <li><a href="#charities">For Charities</a></li>
                 <li><a href="#contact" class="btn">Contact Us</a></li>
             </ul>
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
         <div class="hero">
             <div class="hero-content">
-                <!-- Desktop-only elements -->
-                <h1>Australia's Premier Face-to-Face Fundraising Agency</h1>
+                <h1>Australia's Premier<br>Face-to-Face<br>Fundraising Agency</h1>
                 <p class="tagline">Dignified Fundraisers Make Quality Donors</p>
-                <p class="hero-description">Connecting Australian charities with passionate, long-term donors through highly trained, internationally recruited fundraisers</p>
-                
-                <!-- Mobile-only elements -->
-                <div class="brand-title">
-                    <h2>FUNDRAISERS</h2>
-                    <h2>UNITED</h2>
-                </div>
-                
+                <p class="hero-description">
+                    Connecting Australian charities with passionate, long-term donors through highly trained, internationally recruited fundraisers
+                </p>
                 <div class="hero-buttons">
-                    <a href="#charities" class="btn primary">Partner With Us</a>
-                    <a href="#join" class="btn secondary">Join Our Team</a>
+                    <a href="#about" class="btn primary">Learn More</a>
+                    <a href="#contact" class="btn secondary">Contact Us</a>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Fixed Header that appears when scrolling -->
+    <div class="mobile-header-fixed">
+        <div class="brand-title">
+            <h2>FUNDRAISERS</h2>
+            <h2>UNITED</h2>
+        </div>
+    </div>
+    
     <main>
         <section id="about" class="about">
             <div class="container">

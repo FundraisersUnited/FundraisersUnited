@@ -246,6 +246,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (brandTitle) brandTitle.style.display = 'none';
                     if (tagline) tagline.style.display = 'none';
+                    
+                    // Show the fixed mobile header
+                    const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
+                    if (mobileHeaderFixed) {
+                        mobileHeaderFixed.style.display = 'flex';
+                    }
                 }
             } else {
                 // Reset to default
@@ -301,6 +307,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (brandTitle) brandTitle.style.display = 'flex';
                     if (tagline) tagline.style.display = 'block';
+                    
+                    // Hide the fixed mobile header
+                    const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
+                    if (mobileHeaderFixed) {
+                        mobileHeaderFixed.style.display = 'none';
+                    }
                 }
             }
         }
@@ -762,7 +774,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const hero = document.querySelector('.hero');
         const header = document.querySelector('header');
         const tagline = document.querySelector('header .tagline');
-        const brandTitle = document.querySelector('.brand-title');
+        const brandTitle = document.querySelector('header .brand-title');
+        const mainContent = document.querySelector('main');
         const isMobile = window.innerWidth <= 768;
         
         if (hero && header) {
@@ -777,14 +790,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 hero.style.textAlign = 'center';
                 header.style.minHeight = '550px';
                 
+                // Set up smooth transition from header to main content
+                if (mainContent) {
+                    mainContent.style.position = 'relative';
+                    mainContent.style.zIndex = '5';
+                    
+                    if (!document.body.classList.contains('scrolled')) {
+                        mainContent.style.marginTop = '-20px';
+                        mainContent.style.borderTopLeftRadius = '20px';
+                        mainContent.style.borderTopRightRadius = '20px';
+                        mainContent.style.boxShadow = '0 -10px 20px rgba(0, 0, 0, 0.05)';
+                        mainContent.style.paddingTop = '30px';
+                    }
+                }
+                
                 // Ensure proper spacing between brand title and tagline
                 if (brandTitle && tagline) {
                     // Properly position tagline below the red line
                     tagline.style.marginTop = '35px';
                     tagline.style.display = 'block';
-                    
-                    // Fix scrolling issues by hiding duplicates
-                    // This is now handled in the checkScroll function
+                }
+                
+                // Set up the fixed mobile header that appears when scrolling
+                const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
+                if (mobileHeaderFixed) {
+                    if (document.body.classList.contains('scrolled')) {
+                        mobileHeaderFixed.style.display = 'flex';
+                    } else {
+                        mobileHeaderFixed.style.display = 'none';
+                    }
                 }
             } else {
                 // Desktop view
@@ -810,6 +844,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Hide mobile-specific elements
                 if (brandTitle) brandTitle.style.display = 'none';
+                
+                // Reset main content styles for desktop
+                if (mainContent) {
+                    mainContent.style.marginTop = '';
+                    mainContent.style.borderTopLeftRadius = '';
+                    mainContent.style.borderTopRightRadius = '';
+                    mainContent.style.boxShadow = '';
+                    mainContent.style.paddingTop = '';
+                }
+                
+                // Hide mobile fixed header on desktop
+                const mobileHeaderFixed = document.querySelector('.mobile-header-fixed');
+                if (mobileHeaderFixed) {
+                    mobileHeaderFixed.style.display = 'none';
+                }
             }
         }
     }

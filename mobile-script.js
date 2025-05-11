@@ -132,15 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (input.value !== '') {
                 input.classList.add('has-value');
                 input.parentElement.classList.add('focused');
+                input.style.color = '#000000';
             }
             
             // Focus events
             input.addEventListener('focus', () => {
                 input.parentElement.classList.add('focused');
+                input.style.color = '#000000';
                 // Ensure the label is fully visible
-                const label = input.parentElement.querySelector('label');
+                const label = input.parentElement.querySelector('label, h4');
                 if (label) {
-                    label.style.color = 'var(--text-light)';
+                    label.style.color = '#000000';
                     label.style.opacity = '1';
                 }
             });
@@ -151,28 +153,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     input.parentElement.classList.add('focused');
                     input.classList.add('has-value');
+                    input.style.color = '#000000';
+                }
+            });
+            
+            // Add input event listener to ensure text color updates as user types
+            input.addEventListener('input', () => {
+                if (input.value !== '') {
+                    input.style.color = '#000000';
                 }
             });
             
             // For select elements, ensure the options are visible
             if (input.tagName.toLowerCase() === 'select') {
-                input.style.color = 'var(--text-light)';
-                input.style.opacity = '1';
+                input.style.color = '#000000';
                 
                 // Also ensure options have good contrast
                 const options = input.querySelectorAll('option');
                 options.forEach(option => {
-                    option.style.color = '#333';
-                    option.style.backgroundColor = '#fff';
+                    option.style.color = '#000000';
+                    option.style.backgroundColor = '#ffffff';
                 });
             }
         });
         
         // Ensure all labels are visible
-        const labels = contactForm.querySelectorAll('label');
+        const labels = contactForm.querySelectorAll('label, h4');
         labels.forEach(label => {
-            label.style.color = 'var(--text-light)';
+            label.style.color = '#000000';
             label.style.opacity = '1';
+            label.style.fontWeight = 'bold';
         });
         
         // Handle form submission
@@ -304,26 +314,26 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ensure form elements have sufficient contrast
             const formElements = contactSection.querySelectorAll('input, textarea, select');
             formElements.forEach(element => {
-                element.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-                element.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-                element.style.color = 'white';
+                element.style.backgroundColor = '#f5f7fa';
+                element.style.border = '2px solid #000000';
+                element.style.color = '#000000';
                 
                 // Ensure placeholder text is visible
                 element.setAttribute('placeholder', element.getAttribute('placeholder') || '');
             });
             
             // Make sure labels are visible
-            const labels = contactSection.querySelectorAll('label');
+            const labels = contactSection.querySelectorAll('label, h4');
             labels.forEach(label => {
-                label.style.color = 'white';
+                label.style.color = '#000000';
                 label.style.opacity = '1';
-                label.style.fontWeight = '500';
+                label.style.fontWeight = 'bold';
             });
             
             // Make sure the submit button is clearly visible
             const submitButton = contactSection.querySelector('button[type="submit"]');
             if (submitButton) {
-                submitButton.style.backgroundColor = 'var(--primary)';
+                submitButton.style.backgroundColor = '#FF3333';
                 submitButton.style.color = 'white';
                 submitButton.style.fontWeight = 'bold';
                 submitButton.style.padding = '16px';
@@ -345,6 +355,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.style.display = 'block';
                 el.style.width = '100%';
                 el.style.boxSizing = 'border-box';
+                el.style.border = '2px solid #000000';
+                el.style.color = '#000000';
+                el.style.backgroundColor = '#f5f7fa';
+                
+                // Add input event listener to ensure text color updates as user types
+                el.addEventListener('input', () => {
+                    if (el.value !== '') {
+                        el.style.color = '#000000';
+                    }
+                });
                 
                 // Force select elements to show properly
                 if (el.tagName === 'SELECT') {
@@ -352,6 +372,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.style.webkitAppearance = 'menulist';
                     el.style.mozAppearance = 'menulist';
                 }
+            });
+            
+            // Ensure form labels are visible and styled properly
+            const labels = contactForm.querySelectorAll('label, h4');
+            labels.forEach(label => {
+                label.style.color = '#000000';
+                label.style.opacity = '1';
+                label.style.fontWeight = 'bold';
             });
         }
     });

@@ -58,21 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Back to top button
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-        
         // Update active nav based on scroll position
         updateActiveNavOnScroll();
-    });
-    
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     });
     
     // Update active bottom nav item based on scroll position

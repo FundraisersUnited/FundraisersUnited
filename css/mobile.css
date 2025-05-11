@@ -27,6 +27,17 @@
         pointer-events: none !important;
     }
 
+    /* Force hide desktop logo elements */
+    header > nav > .logo {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        pointer-events: none !important;
+    }
+
     /* ==== MOBILE INITIAL HERO VIEW (NOT SCROLLED) ==== */
     body:not(.scrolled) header {
         /* min-height: 100vh; Ensure it takes up viewport initially if desired */
@@ -43,17 +54,15 @@
         align-items: center;
         width: 100%;
     }
-    body:not(.scrolled) header > nav > .logo {
-        display: block !important; /* Or flex, ensure visible */
-        margin-bottom: 20px; /* Space between logo and brand title */
-        max-width: 100px; /* Example size, adjust as needed */
-    }
+    
+    /* Display mobile brand title instead of logo */
     body:not(.scrolled) header > nav > .brand-title { /* "FUNDRAISERS UNITED" */
         display: flex !important;
         flex-direction: column;
         align-items: center;
         color: white;
         margin-bottom: 10px;
+        margin-top: 40px;
     }
     body:not(.scrolled) header > nav > .brand-title h2 {
         font-size: 2.1rem; /* Adjust as needed */
@@ -221,7 +230,11 @@
     }
     /* Hide desktop elements on mobile */
     .hero h1,
-    .hero .hero-description {
+    .hero .hero-description,
+    .hero-buttons,
+    .nav-logo-text,
+    .nav-logo-tagline,
+    .nav-brandmark {
         display: none !important;
     }
     /* Hide nav-links on mobile */

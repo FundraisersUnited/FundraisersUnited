@@ -2,652 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Fundraisers United - Leading F2F Fundraising Agency in Australia</title>
-    <!-- CRITICAL FIX: Inline script to ensure fixed nav works when scrolling -->
-    <script>
-        // This runs very early to ensure the nav bar works
-        window.addEventListener('scroll', function fixedNavEmergencyHandler() {
-            const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-            const nav = document.querySelector('nav');
-            if (scrollPos > 100 && nav) {
-                nav.classList.add('fixed-nav');
-                document.body.classList.add('scrolled');
-                nav.style.position = 'fixed';
-                nav.style.top = '0';
-                nav.style.left = '0';
-                nav.style.width = '100%';
-                nav.style.zIndex = '9999';
-                nav.style.display = 'flex';
-                nav.style.visibility = 'visible';
-                nav.style.opacity = '1';
-            }
-        });
-        
-        // Force check on page load
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                window.dispatchEvent(new Event('scroll'));
-            }, 100);
-            setTimeout(function() {
-                window.dispatchEvent(new Event('scroll'));
-            }, 500);
-        });
-    </script>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/desktop.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Modern fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/fundraisers-united-logo.png">
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="Fundraisers United - Leading F2F Fundraising Agency in Australia">
-    <meta property="og:description" content="Connect with passionate, long-term donors through our highly trained F2F fundraisers.">
-    <meta property="og:image" content="images/og-image.jpg">
-    <meta property="og:url" content="https://fundraisersunited.com.au">
-    <script>
-        // Initialize navigation fix on page load - this runs before main.js
-        document.addEventListener('DOMContentLoaded', function() {
-            // Force check scroll position immediately
-            const checkScrollPosition = function() {
-                const header = document.querySelector('header');
-                const nav = document.querySelector('nav');
-                if (header && nav && window.pageYOffset > header.offsetHeight - 100) {
-                    nav.classList.add('fixed-nav');
-                    document.body.classList.add('scrolled');
-                    header.classList.add('scrolled');
-                    document.body.style.paddingTop = nav.offsetHeight + 'px';
-                }
-            };
-            // Check immediately and after a short delay
-            checkScrollPosition();
-            setTimeout(checkScrollPosition, 50);
-            setTimeout(checkScrollPosition, 500);
-        });
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraisers United - Australia's Premier Face-to-Face Fundraising Agency</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
-        /* Inline styles for the placeholder images */
-        .team-image-placeholder {
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            height: 400px;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .team-image-placeholder:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none" opacity="0.1"/></svg>');
-            background-repeat: repeat;
-            opacity: 0.2;
-        }
-        
-        .team-image-placeholder:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .charity-image-placeholder {
-            background: linear-gradient(135deg, #7209b7, #560bad);
-            height: 400px;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .charity-image-placeholder:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none" opacity="0.1"/></svg>');
-            background-repeat: repeat;
-            opacity: 0.2;
-        }
-        
-        .charity-image-placeholder:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .testimonial-author-placeholder {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #38b000, #70e000);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .testimonial-author-placeholder:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* Animation classes */
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-        
-        .animate-fade-out {
-            animation: fadeOut 0.3s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-20px); }
-        }
-        
-        /* Form styles */
-        .form-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        
-        .form-group.focused label {
-            transform: translateY(-24px) scale(0.85);
-            color: var(--primary-color);
-        }
-        
-        .form-group label {
-            position: absolute;
-            left: 15px;
-            top: 12px;
-            font-size: 1rem;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            transform-origin: left top;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 15px;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            width: 100%;
-            transition: all 0.3s ease;
-            box-shadow: none;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background-color: white;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
-        }
-        
-        .form-group input.error,
-        .form-group select.error,
-        .form-group textarea.error {
-            border-color: #ff4d4f;
-            background-color: rgba(255, 77, 79, 0.05);
-        }
-        
-        .error-message {
-            color: #ff4d4f;
-            font-size: 0.85rem;
-            margin-top: 5px;
-            animation: fadeIn 0.3s ease forwards;
-        }
-        
-        .success-message {
-            padding: 30px;
-            background-color: #f6ffed;
-            border: 1px solid #b7eb8f;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        .success-message i {
-            font-size: 2rem;
-            color: #52c41a;
-        }
-        
-        .success-message p {
+        body {
             margin: 0;
-            font-weight: 500;
-            color: #52c41a;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1E1E2C;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .loader {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid #FF3333;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        
+        .buttons {
+            margin-top: 30px;
+            display: none; /* Hidden by default, shown only if redirect fails */
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            margin: 0 10px;
+            background-color: #FF3333;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #E62020;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#home" class="logo">
-                <img src="images/Logo_FRU Brandmark.png" alt="Fundraisers United Brandmark" class="nav-brandmark">
-                <span class="nav-logo-text">Fundraisers United</span>
-                <span class="nav-logo-tagline">Dignified fundraisers make quality donors</span>
-            </a>
-            <div class="brand-title">
-                <h2>FUNDRAISERS</h2>
-                <h2>UNITED</h2>
-            </div>
-            <p class="tagline">Dignified Fundraisers Make Quality Donors</p>
-            <ul class="nav-links">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Our Services</a></li>
-                <li><a href="#approach">Our Approach</a></li>
-                <li><a href="#dignity">Dignity in Fundraising</a></li>
-                <li><a href="#join">Join Our Team</a></li>
-                <li><a href="#charities">For Charities</a></li>
-                <li><a href="#contact" class="btn">Contact Us</a></li>
-            </ul>
-            <button class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Australia's Premier<br>Face-to-Face<br>Fundraising Agency</h1>
-                <p class="tagline">Dignified Fundraisers Make Quality Donors</p>
-                <p class="hero-description">
-                    Connecting Australian charities with passionate, long-term donors through highly trained, internationally recruited fundraisers
-                </p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn primary">Learn More</a>
-                    <a href="#contact" class="btn secondary">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Fixed Header that appears when scrolling -->
-    <div class="mobile-header-fixed">
-        <div class="brand-title">
-            <h2>FUNDRAISERS</h2>
-            <h2>UNITED</h2>
-        </div>
-        <div class="tagline">Dignified Fundraisers Make Quality Donors</div>
+    <img src="images/Logo_FRU Brandmark.png" alt="Fundraisers United Logo" class="logo">
+    <h1>Fundraisers United</h1>
+    <div class="message">Loading the appropriate version for your device...</div>
+    <div class="loader"></div>
+    
+    <div class="buttons" id="manual-buttons">
+        <p>If you are not redirected automatically, please choose:</p>
+        <a href="desktop-index.html" class="btn">Desktop Version</a>
+        <a href="mobile-index.html" class="btn">Mobile Version</a>
     </div>
     
-    <main>
-        <section id="about" class="about">
-            <div class="container">
-                <h2>Who We Are</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Fundraisers United is a specialist face-to-face fundraising agency operating throughout Australia. We connect Australian charities with passionate, long-term donors by deploying highly trained, internationally recruited F2F fundraisers.</p>
-                        <p>Our mission is to deliver sustained success for our clients and rewarding careers for our team through rigorous performance management, a focus on validation and donor retention, competitive staff packages, ethical practices, and a seamless international transition process.</p>
-                    </div>
-                    <div class="about-values">
-                        <h3>Our Values</h3>
-                        <ul>
-                            <li><strong>Performance Excellence:</strong> Driven by achieving and exceeding key metrics</li>
-                            <li><strong>Quality & Integrity:</strong> Commitment to high-quality donor acquisition and ethical practices</li>
-                            <li><strong>Staff Development & Retention:</strong> Investing in our team's success and wellbeing</li>
-                            <li><strong>Partnership:</strong> Building long-term, collaborative relationships</li>
-                            <li><strong>Accountability:</strong> Taking ownership of performance targets and commitments</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-street-view"></i>
-                        <h3>Street Fundraising</h3>
-                        <p>High-quality donor acquisition through our experienced street fundraising teams, focusing on validated sign-ups and long-term donor retention.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-store"></i>
-                        <h3>Private Site Fundraising</h3>
-                        <p>Strategic private site fundraising in high-traffic locations, delivering consistent results and quality donor interactions.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-laptop"></i>
-                        <h3>Digital Follow-Up</h3>
-                        <p>Enhance donor engagement and generate additional revenue through targeted digital follow-up campaigns.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Performance Tracking</h3>
-                        <p>Comprehensive performance monitoring and reporting, ensuring transparency and continuous improvement.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="stats" class="stats">
-            <div class="container">
-                <h2>Expected Performance</h2>
-                <p class="stats-description">Indicative metrics based on expected performance from dignified fundraisers. Real performance data will be updated as our campaigns progress.</p>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>0.32</h3>
-                        <p>Average Sign-ups Per Hour</p>
-                        <span class="indicative-label">Indicative</span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>92%</h3>
-                        <p>Validation Rate</p>
-                        <span class="indicative-label">Indicative</span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>8%</h3>
-                        <p>Clawback Rate</p>
-                        <span class="indicative-label">Indicative</span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>100%</h3>
-                        <p>PFRA Compliant</p>
-                        <span class="indicative-label">Indicative</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="approach" class="approach">
-            <div class="container">
-                <h2>Our Approach</h2>
-                <div class="approach-content">
-                    <div class="approach-item">
-                        <h3>International Expertise</h3>
-                        <p>We source experienced fundraising talent from international markets, ensuring high-quality performance from day one. Our fundraisers bring proven expertise and a fresh perspective to Australian campaigns.</p>
-                    </div>
-                    <div class="approach-item">
-                        <h3>Quality-Focused</h3>
-                        <p>Our performance systems are designed to prioritize quality over quantity. We incentivize our fundraisers to secure validated, higher-value donors who stay committed to your cause long-term.</p>
-                    </div>
-                    <div class="approach-item">
-                        <h3>Structured Management</h3>
-                        <p>With a 1:4 team leader to fundraiser ratio, we provide close supervision, coaching, and performance management to ensure consistent results across all campaigns.</p>
-                    </div>
-                    <div class="approach-item">
-                        <h3>Staff Retention</h3>
-                        <p>Our unique international transition program ensures continuity of expertise and operational capacity, addressing one of the biggest challenges in F2F fundraising – staff turnover.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="dignity" class="dignity">
-            <div class="container">
-                <h2>Dignity in Fundraising</h2>
-                <div class="dignity-content">
-                    <div class="dignity-text animate-on-scroll">
-                        <h3>How Dignified Fundraisers Lead to Quality Donors</h3>
-                        <p>At Fundraisers United, we believe that treating our fundraisers with dignity and respect directly translates to the quality of donors they attract. When fundraisers feel valued, supported, and properly compensated, they bring their best selves to every donor interaction.</p>
-                        <p>Our approach is simple yet revolutionary in the fundraising industry: we prioritize the wellbeing of our people because we know it directly impacts our results. Unlike traditional models that often lead to burnout and high turnover, our dignity-first approach creates sustainable careers for fundraisers and exceptional value for charities.</p>
-                    </div>
-                    <div class="dignity-benefits">
-                        <div class="dignity-benefit-item animate-on-scroll">
-                            <i class="fas fa-trophy"></i>
-                            <h4>Higher Quality Donors</h4>
-                            <p>Fundraisers who feel respected engage authentically with prospects, resulting in donors who truly connect with causes and remain committed long-term.</p>
-                        </div>
-                        <div class="dignity-benefit-item animate-on-scroll">
-                            <i class="fas fa-heart"></i>
-                            <h4>Reduced Turnover</h4>
-                            <p>By treating employees the way they deserve, we bring fundraising instability to a standstill, eliminating the constant recruitment and training cycle.</p>
-                        </div>
-                        <div class="dignity-benefit-item animate-on-scroll">
-                            <i class="fas fa-handshake"></i>
-                            <h4>Authentic Relationships</h4>
-                            <p>Dignified fundraisers build genuine relationships rather than pursuing short-term metrics, resulting in donors who feel truly connected to the cause.</p>
-                        </div>
-                        <div class="dignity-benefit-item animate-on-scroll">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>Sustainable Growth</h4>
-                            <p>Our model creates a virtuous cycle where satisfied employees attract committed donors, leading to predictable, long-term revenue growth for charities.</p>
-                        </div>
-                    </div>
-                    <div class="dignity-quote animate-on-scroll">
-                        <blockquote>
-                            "When we invest in our fundraisers' wellbeing and dignity, we're ultimately investing in the quality and longevity of donor relationships. This isn't just the right thing to do—it's the smart approach to sustainable fundraising."
-                        </blockquote>
-                        <p class="quote-author">— Fundraisers United Leadership Team</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="join" class="join">
-            <div class="container">
-                <h2>Join Our Team</h2>
-                <div class="join-content">
-                    <div class="join-text">
-                        <p>Are you an experienced face-to-face fundraiser looking for your next adventure? Fundraisers United offers competitive packages, supportive team environments, and the opportunity to work in beautiful Australia while advancing your fundraising career.</p>
-                        <p>Creating a dignified environment for fundraisers has been lacking globally. We're changing that by offering stable employment and treating fundraisers with the respect they deserve for the important work they do.</p>
-                        <h3>We Offer:</h3>
-                        <ul>
-                            <li><strong>Permanent Employment Model:</strong> Moving away from casual contracts to fixed and permanent positions with stability</li>
-                            <li><strong>Competitive Base Wages:</strong> From AUD $35-45/hour depending on role, plus performance bonuses</li>
-                            <li><strong>Structured Incentives:</strong> Weekly bonuses based on validated sign-ups and retention</li>
-                            <li><strong>Genuine Benefits:</strong> Including 4 weeks annual leave, 10 days personal leave, and 11% superannuation</li>
-                            <li><strong>Comprehensive Relocation Package:</strong> Covering flights and initial accommodation</li>
-                            <li><strong>Working Holiday Visa Support:</strong> Specialized management and transition assistance</li>
-                            <li><strong>Career Development:</strong> Clear progression pathways from Fundraiser to Team Leader to Manager roles</li>
-                            <li><strong>Retention Rewards:</strong> Additional bonuses after successful completion of 6 months</li>
-                        </ul>
-                        <p>Our approach isn't just better for our team—it delivers superior results for our charity partners through stable, motivated fundraisers who build authentic connections with donors.</p>
-                        <a href="#contact" class="btn primary">Apply Now</a>
-                    </div>
-                    <div class="join-image">
-                        <img src="images/our_team.png" alt="Our Amazing Team">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="charities" class="charities">
-            <div class="container">
-                <h2>For Charities</h2>
-                <div class="charities-content">
-                    <div class="charities-image">
-                        <img src="images/charity_partner.png" alt="Our Charity Partners">
-                    </div>
-                    <div class="charities-text">
-                        <h3>Why Partner With Us?</h3>
-                        <ul>
-                            <li><strong>Experienced Teams:</strong> Access to highly-skilled international fundraising talent</li>
-                            <li><strong>Quality Focus:</strong> High validation rates and low clawbacks</li>
-                            <li><strong>Consistent Performance:</strong> Reliable SPH and predictable outcomes</li>
-                            <li><strong>Ethical Practices:</strong> PFRA compliant, transparent reporting</li>
-                            <li><strong>Long-term Value:</strong> Focus on donor retention and lifetime value</li>
-                            <li><strong>Flexible Solutions:</strong> Street, private site, and digital follow-up options</li>
-                        </ul>
-                        
-                        <div class="leadership-profile">
-                            <h3>Meet Our Leadership</h3>
-                            <div class="profile-content">
-                                <div class="profile-image">
-                                    <img src="images/profile_grant.png" alt="Grant Richards" class="profile-image-photo">
-                                </div>
-                                <div class="profile-text">
-                                    <h4>Grant Richards</h4>
-                                    <p class="profile-title">Founder & Managing Director</p>
-                                    <p>With over 18 years of experience in fundraising across Australia, New Zealand, South Africa, and Europe, Grant brings unparalleled expertise in building dignified fundraising teams that deliver exceptional results. His background includes:</p>
-                                    <ul class="profile-highlights">
-                                        <li>Leading donor acquisition campaigns that secured 120,000+ new donors annually</li>
-                                        <li>Managing $35M+ fundraising budgets across three continents</li>
-                                        <li>Developing partnerships with global organizations including UNICEF, Greenpeace, World Vision, ActionAid, and Save the Children</li>
-                                        <li>Consulting for seven UNICEF national fundraising offices across Eastern Europe</li>
-                                        <li>An MBA with distinction and Master's degree in Psychology, bringing a unique perspective on donor behavior and team management</li>
-                                    </ul>
-                                    <p>"I lead with integrity, fostering an inclusive environment where people thrive. Our approach isn't just about numbers—it's about creating a dignified workplace that naturally produces quality donors and sustainable results."</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="#contact" class="btn primary">Discuss Your Needs</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-content">
-                    <div class="contact-form">
-                        <form id="contactForm" action="https://formsubmit.co/Admin@fundraisersunited.com.au" method="POST">
-                            <!-- FormSubmit configuration -->
-                            <input type="hidden" name="_subject" value="New contact from Fundraisers United website">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://fundraisersunited.com.au/thank-you.html">
-                            
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="organization">Organization (if applicable)</label>
-                                <input type="text" id="organization" name="organization">
-                            </div>
-                            <div class="form-group">
-                                <label for="inquiry-type">Inquiry Type</label>
-                                <select id="inquiry-type" name="inquiry-type">
-                                    <option value="charity">Charity Partnership</option>
-                                    <option value="job">Job Opportunity</option>
-                                    <option value="general">General Inquiry</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Your Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn primary">Send Message</button>
-                        </form>
-                    </div>
-                    <div class="contact-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Melbourne, Victoria, 3000<br>Australia</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone"></i>
-                            <p>+61 448 573 251</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <p><a href="mailto:Admin@fundraisersunited.com.au">Admin@fundraisersunited.com.au</a></p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-globe"></i>
-                            <p><a href="https://www.fundraisersunited.com.au" target="_blank">www.fundraisersunited.com.au</a></p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-id-card"></i>
-                            <p>ABN: 52 686 198 023</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/Logo_FRU Brandmark.png" alt="Fundraisers United Logo">
-                    <p>Fundraisers United</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#approach">Our Approach</a></li>
-                        <li><a href="#dignity">Dignity in Fundraising</a></li>
-                        <li><a href="#join">Join Our Team</a></li>
-                        <li><a href="#charities">For Charities</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Get In Touch</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@fundraisersunited.com.au">contact@fundraisersunited.com.au</a></p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+61390999222">+61 3 9099 9222</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Sydney & Melbourne, Australia</p>
-                    <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Fundraisers United. All rights reserved.</p>
-                <p>
-                    <a href="#">Privacy Policy</a> | 
-                    <a href="#">Terms of Service</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Mobile Bottom Navigation -->
-    <div class="mobile-nav">
-        <a href="#about" class="mobile-nav-item"><i class="fas fa-info-circle"></i> <span>About</span></a>
-        <a href="#services" class="mobile-nav-item"><i class="fas fa-briefcase"></i> <span>Services</span></a>
-        <a href="#join" class="mobile-nav-item"><i class="fas fa-users"></i> <span>Join Us</span></a>
-        <a href="#charities" class="mobile-nav-item"><i class="fas fa-heart"></i> <span>Charities</span></a>
-        <a href="#contact" class="mobile-nav-item"><i class="fas fa-envelope"></i> <span>Contact</span></a>
-    </div>
-    
-    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to detect mobile devices
+            function isMobileDevice() {
+                // Check for touchscreen capabilities
+                const hasTouchScreen = (
+                    'ontouchstart' in window || 
+                    navigator.maxTouchPoints > 0 || 
+                    window.matchMedia('(pointer: coarse)').matches
+                );
+                
+                // Check for mobile user agent
+                const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                // Check viewport width
+                const isMobileWidth = window.innerWidth <= 768;
+                
+                // Consider a device mobile if it has touch capabilities AND either has a mobile user agent OR small screen
+                return hasTouchScreen && (mobileUserAgent || isMobileWidth);
+            }
+            
+            // Redirect based on device type with a slight delay for better UX
+            setTimeout(function() {
+                if (isMobileDevice()) {
+                    window.location.href = 'mobile-index.html';
+                } else {
+                    window.location.href = 'desktop-index.html';
+                }
+            }, 1500);
+            
+            // Show manual buttons if redirect hasn't happened after 5 seconds (fallback)
+            setTimeout(function() {
+                document.getElementById('manual-buttons').style.display = 'block';
+            }, 5000);
+        });
+    </script>
 </body>
 </html> 

@@ -45,51 +45,161 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Improved scroll handling
     const header = document.querySelector('header');
-    const nav = document.querySelector('header > nav'); // More specific to the main nav
+    const nav = document.querySelector('header > nav');
     const body = document.body;
+    const fixedNavHeight = 70;
+    const mainContent = document.querySelector('main');
+    const firstSection = mainContent ? mainContent.querySelector('section:first-child') : null;
+    
+    // Use requestAnimationFrame for smooth scrolling
+    let ticking = false;
+    let lastScrollY = 0;
+    const scrollThreshold = 200; // Simpler threshold based on pixels
 
-    // Function to check scroll position and toggle classes
-    function checkScroll() {
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        const isMobile = window.innerWidth <= 767;
-
-        if (scrollPosition > 50) { // Adjusted threshold for quicker response
-            body.classList.add('scrolled');
-            if (header) header.classList.add('scrolled'); // If needed for header-specific transitions
+    // Simplified scroll handler using rAF
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll(lastScrollY);
+                ticking = false;
+            });
             
-            if (!isMobile && nav) {
-                // Desktop fixed nav logic (already handled by CSS .fixed-nav on body.scrolled nav)
-                // Ensure main <nav> gets .fixed-nav for desktop CSS to apply if not already there
-                nav.classList.add('fixed-nav'); 
-                body.style.paddingTop = nav.offsetHeight + 'px';
-            }
-        } else {
-            body.classList.remove('scrolled');
-            if (header) header.classList.remove('scrolled');
-            
-            if (!isMobile && nav) {
-                nav.classList.remove('fixed-nav');
-                body.style.paddingTop = '0';
-            }
+            ticking = true;
         }
     }
 
-    // Initial setup for responsive layout
-    function setupResponsiveLayout() {
-        const isMobile = window.innerWidth <= 767;
-        // The CSS now handles initial visibility based on media queries and :not(.scrolled)
-        // This function might be simplified or used for dynamic JS-driven adjustments if any remain
-        checkScroll(); // Apply scroll state immediately on load/resize
+    // Simplified scroll logic
+    function handleScroll(scrollY) {
+        // Simple threshold-based transition
+        if (scrollY > scrollThreshold) {
+            if (!body.classList.contains('scrolled')) {
+                body.classList.add('scrolled');
+                
+                if (nav && !nav.classList.contains('fixed-nav')) {
+                    nav.classList.add('fixed-nav');
+                    // Set explicit styles for smoother transition
+                    nav.style.position = 'fixed';
+                    nav.style.top = '0';
+                    nav.style.left = '0';
+                    nav.style.width = '100%';
+                    nav.style.zIndex = '1000';
+                    
+                    // Force a reflow before changing opacity/transform
+                    void nav.offsetWidth;
+                    
+                    // Show the nav
+                    nav.style.opacity = '1';
+                    nav.style.transform = 'translateY(0)';
+                    
+                    // Add padding to body and adjust main content padding
+                    body.style.paddingTop = fixedNavHeight + 'px';
+                    
+                    // Add additional padding to main content to prevent cutting off
+                    if (mainContent) {
+                        mainContent.style.paddingTop = '120px'; // Increased padding
+                    }
+                    
+                    // Add specific padding to the first section to ensure visibility
+                    if (firstSection) {
+                        firstSection.style.paddingTop = '80px'; // Increased padding
+                    }
+                    
+                    // Hide the header element
+                    if (header) {
+                        header.style.opacity = '0';
+                        header.style.visibility = 'hidden';
+                        header.style.display = 'none';
+                    }
+                }
+            }
+        } else {
+            if (body.classList.contains('scrolled')) {
+                // Show header first
+                if (header) {
+                    header.style.display = 'flex';
+                    // Force a reflow to trigger transition
+                    void header.offsetWidth;
+                    header.style.opacity = '1';
+                    header.style.visibility = 'visible';
+                }
+                
+                // Hide the nav 
+                if (nav && nav.classList.contains('fixed-nav')) {
+                    nav.style.opacity = '0';
+                    nav.style.transform = 'translateY(-100%)';
+                    
+                    // Remove class and reset styles after transition
+                    setTimeout(() => {
+                        nav.classList.remove('fixed-nav');
+                        nav.style.position = '';
+                        nav.style.top = '';
+                        nav.style.left = '';
+                        nav.style.width = '';
+                        nav.style.zIndex = '';
+                    }, 200); // Match transition duration
+                }
+                
+                body.classList.remove('scrolled');
+                body.style.paddingTop = '0';
+                
+                // Reset padding on main content
+                if (mainContent) {
+                    mainContent.style.paddingTop = '100px'; // Reset to normal padding
+                }
+                
+                // Reset padding on first section
+                if (firstSection) {
+                    firstSection.style.paddingTop = '80px'; // Reset to normal padding
+                }
+            }
+        }
     }
-
-    // Event Listeners
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('resize', setupResponsiveLayout);
-    window.addEventListener('load', setupResponsiveLayout);
-
-    // Initial call to set things up correctly
-    setupResponsiveLayout();
+    
+    // Initial setup
+    function setupPage() {
+        // Initial check on page load
+        handleScroll(window.scrollY);
+        
+        // Ensure hero elements are visible
+        if (mainContent && window.scrollY < scrollThreshold) {
+            mainContent.style.opacity = '1';
+            
+            if (firstSection) {
+                firstSection.style.opacity = '1';
+                firstSection.style.transform = 'none'; // Ensure no transform is applied
+            }
+            
+            // Make sure header is visible when at the top
+            if (header && window.scrollY < 50) {
+                header.style.display = 'flex';
+                header.style.opacity = '1';
+                header.style.visibility = 'visible';
+            }
+        }
+        
+        // Force check scroll position after a brief delay to account for page load
+        setTimeout(() => {
+            handleScroll(window.scrollY);
+            // Apply correct padding based on viewport size
+            if (window.innerWidth >= 768) { // Desktop
+                if (body.classList.contains('scrolled') && firstSection) {
+                    firstSection.style.paddingTop = '150px';
+                }
+            }
+        }, 100);
+    }
+    
+    // Use passive event listeners for better performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', setupPage, { passive: true });
+    window.addEventListener('load', setupPage);
+    
+    // Run initial setup
+    setupPage();
     
     // Close mobile menu when clicking a link
     const navItems = document.querySelectorAll('.nav-links a');

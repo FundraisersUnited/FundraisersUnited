@@ -305,42 +305,42 @@
                 <div class="contact-content">
                     <div class="contact-form-wrapper" style="background-color: #FFFFFF; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
                         <h3 style="color: #1E1E2C; margin-bottom: 25px; text-align: center;">Send Us a Message</h3>
-                        <form id="contactForm" action="https://formsubmit.co/admin@fundraisersunited.com.au" method="POST">
+                        <form id="contactForm" action="https://formsubmit.co/admin@fundraisersunited.com.au" method="POST" style="display: block !important;">
                             <input type="hidden" name="_subject" value="New contact from Fundraisers United website">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://fundraisersunited.com.au/thank-you.html">
                             
-                            <div style="margin-bottom: 20px;">
-                                <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Your Name</label>
-                                <input type="text" id="name" name="name" required style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                            <div style="margin-bottom: 20px; display: block !important;">
+                                <label for="name" style="display: block !important; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Your Name</label>
+                                <input type="text" id="name" name="name" required style="display: block !important; width: 100% !important; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Email Address</label>
-                                <input type="email" id="email" name="email" required style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                            <div style="margin-bottom: 20px; display: block !important;">
+                                <label for="email" style="display: block !important; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Email Address</label>
+                                <input type="email" id="email" name="email" required style="display: block !important; width: 100% !important; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <label for="organization" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Organization (if applicable)</label>
-                                <input type="text" id="organization" name="organization" style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                            <div style="margin-bottom: 20px; display: block !important;">
+                                <label for="organization" style="display: block !important; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Organization (if applicable)</label>
+                                <input type="text" id="organization" name="organization" style="display: block !important; width: 100% !important; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <label for="inquiry" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Inquiry Type</label>
-                                <select id="inquiry" name="inquiry" style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); appearance: auto;">
+                            <div style="margin-bottom: 20px; display: block !important;">
+                                <label for="inquiry" style="display: block !important; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Inquiry Type</label>
+                                <select id="inquiry" name="inquiry" style="display: block !important; width: 100% !important; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); appearance: auto; -webkit-appearance: menulist; -moz-appearance: menulist;">
                                     <option value="charity">Charity Partnership</option>
                                     <option value="job">Job Opportunity</option>
                                     <option value="general">General Inquiry</option>
                                 </select>
                             </div>
                             
-                            <div style="margin-bottom: 30px;">
-                                <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Your Message</label>
-                                <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; min-height: 120px; resize: vertical; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);"></textarea>
+                            <div style="margin-bottom: 30px; display: block !important;">
+                                <label for="message" style="display: block !important; margin-bottom: 8px; font-weight: 600; color: #333333; font-size: 1rem;">Your Message</label>
+                                <textarea id="message" name="message" rows="5" required style="display: block !important; width: 100% !important; padding: 12px 15px; background-color: #F8F9FA; border: 1px solid #E1E1E8; color: #333333; border-radius: 8px; font-size: 1rem; min-height: 120px; resize: vertical; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);"></textarea>
                             </div>
                             
-                            <button type="submit" style="width: 100%; padding: 14px 20px; background-color: #FF3333; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3); transition: all 0.3s ease;">Send Message</button>
+                            <button type="submit" style="display: block !important; width: 100%; padding: 14px 20px; background-color: #FF3333; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3); transition: all 0.3s ease;">Send Message</button>
                         </form>
                     </div>
                     

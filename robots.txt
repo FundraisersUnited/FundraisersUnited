@@ -1,0 +1,26 @@
+# robots.txt for Fundraisers United
+
+User-agent: *
+Allow: /
+
+# Prefer desktop version for indexing
+User-agent: Googlebot
+Allow: /desktop-index.html
+Allow: /mobile-index.html
+Allow: /index.html
+Allow: /thank-you.html
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
+Allow: /pfra-compliance.html
+Allow: /
+
+# Disallow backup and development files
+Disallow: /backup/
+Disallow: /*.py$
+Disallow: /logo_instructions.html
+Disallow: /logo_helper.py
+Disallow: /download_logo.py
+Disallow: /create_images.py
+
+# Sitemap
+Sitemap: https://fundraisersunited.com.au/sitemap.xml 

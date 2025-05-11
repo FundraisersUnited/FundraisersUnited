@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             background-color: #1E1E2C;
             color: white;
             height: 100vh;
@@ -21,18 +21,33 @@
         }
         
         .logo {
-            max-width: 200px;
+            max-width: 180px;
             margin-bottom: 20px;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); filter: drop-shadow(0 0 10px rgba(255, 51, 51, 0.5)); }
+        }
+        
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #FF3333;
         }
         
         .loader {
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            border-top: 5px solid #FF3333;
-            width: 50px;
-            height: 50px;
+            border-top: 4px solid #FF3333;
+            border-right: 4px solid #FF3333;
+            width: 40px;
+            height: 40px;
             animation: spin 1s linear infinite;
-            margin: 30px auto;
+            margin: 25px auto;
         }
         
         @keyframes spin {
@@ -41,37 +56,72 @@
         }
         
         .message {
-            margin: 20px 0;
-            font-size: 18px;
+            margin: 15px 0;
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 300px;
+            line-height: 1.4;
         }
         
         .buttons {
             margin-top: 30px;
             display: none; /* Hidden by default, shown only if redirect fails */
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
         
         .btn {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 12px 28px;
             margin: 0 10px;
             background-color: #FF3333;
             color: white;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3);
         }
         
         .btn:hover {
             background-color: #E62020;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 51, 51, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .loading-text {
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 480px) {
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                margin: 8px 0;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <img src="images/Logo_FRU Brandmark.png" alt="Fundraisers United Logo" class="logo">
     <h1>Fundraisers United</h1>
-    <div class="message">Loading the appropriate version for your device...</div>
+    <div class="message">Optimizing your experience based on your device...</div>
     <div class="loader"></div>
+    <div class="loading-text">Please wait a moment</div>
     
     <div class="buttons" id="manual-buttons">
         <p>If you are not redirected automatically, please choose:</p>
@@ -83,6 +133,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Function to detect mobile devices
             function isMobileDevice() {
+                // More comprehensive detection approach
+                
                 // Check for touchscreen capabilities
                 const hasTouchScreen = (
                     'ontouchstart' in window || 
@@ -94,25 +146,37 @@
                 const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                 
                 // Check viewport width
-                const isMobileWidth = window.innerWidth <= 768;
+                const isMobileWidth = window.innerWidth <= 840;
                 
-                // Consider a device mobile if it has touch capabilities AND either has a mobile user agent OR small screen
-                return hasTouchScreen && (mobileUserAgent || isMobileWidth);
+                // Consider a device mobile if it has a mobile user agent OR small screen width
+                return mobileUserAgent || isMobileWidth;
             }
+            
+            // Show loading text with dots animation
+            const loadingText = document.querySelector('.loading-text');
+            let dots = 0;
+            const loadingInterval = setInterval(function() {
+                dots = (dots + 1) % 4;
+                loadingText.textContent = 'Please wait' + '.'.repeat(dots);
+            }, 500);
             
             // Redirect based on device type with a slight delay for better UX
             setTimeout(function() {
+                clearInterval(loadingInterval);
                 if (isMobileDevice()) {
                     window.location.href = 'mobile-index.html';
                 } else {
                     window.location.href = 'desktop-index.html';
                 }
-            }, 1500);
+            }, 1800);
             
-            // Show manual buttons if redirect hasn't happened after 5 seconds (fallback)
+            // Show manual buttons if redirect hasn't happened after 4 seconds (fallback)
             setTimeout(function() {
-                document.getElementById('manual-buttons').style.display = 'block';
-            }, 5000);
+                clearInterval(loadingInterval);
+                document.getElementById('manual-buttons').style.display = 'flex';
+                document.querySelector('.loader').style.display = 'none';
+                document.querySelector('.loading-text').textContent = 'Redirection taking longer than expected';
+            }, 4000);
         });
     </script>
 </body>

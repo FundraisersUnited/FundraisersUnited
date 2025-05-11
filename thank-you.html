@@ -4,42 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Fundraisers United</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Modern fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/fundraisers-united-logo.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #1E1E2C;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1E1E2C;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loader-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #FF3333;
+            border-right: 4px solid #FF3333;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            font-size: 16px;
+            color: white;
+        }
+        
         .thank-you-container {
-            min-height: 60vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 80px 20px;
+            background: radial-gradient(circle at center, #2a2a40 0%, #1E1E2C 100%);
         }
         
         .thank-you-icon {
             font-size: 5rem;
-            color: var(--primary-color);
+            color: #FF3333;
             margin-bottom: 30px;
             animation: bounceIn 1s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.3));
         }
         
         .thank-you-container h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: #FF3333;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
         
         .thank-you-container p {
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto 30px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: #FF3333;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 51, 51, 0.3);
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #E62020;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 51, 51, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
         }
         
         @keyframes bounceIn {
@@ -47,72 +119,212 @@
             60% { transform: scale(1.2); }
             100% { transform: scale(1); opacity: 1; }
         }
+        
+        footer {
+            background-color: #16161f;
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+            flex: 1 1 300px;
+        }
+        
+        .footer-logo img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-legal {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            color: #FF3333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        footer ul li {
+            margin-bottom: 8px;
+        }
+        
+        footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #FF3333;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 20px 20px 0;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .thank-you-container h1 {
+                font-size: 2.5rem;
+            }
+            
+            .thank-you-container {
+                padding: 60px 20px;
+                min-height: 60vh;
+            }
+            
+            .thank-you-icon {
+                font-size: 4rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-logo, .footer-links, .footer-legal {
+                margin-bottom: 30px;
+            }
+        }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header style="background: linear-gradient(rgba(33, 37, 41, 0.85), rgba(33, 37, 41, 0.85)), linear-gradient(135deg, #4361ee, #7209b7) no-repeat center center/cover;">
-        <nav>
-            <div class="logo">
-                <a href="index.html"><img src="images/fundraisers-united-logo.png" alt="Fundraisers United Logo"></a>
-            </div>
-            <div class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html#about">About Us</a></li>
-                <li><a href="index.html#services">Our Services</a></li>
-                <li><a href="index.html#approach">Our Approach</a></li>
-                <li><a href="index.html#dignity">Dignity in Fundraising</a></li>
-                <li><a href="index.html#join">Join Our Team</a></li>
-                <li><a href="index.html#charities">For Charities</a></li>
-                <li><a href="index.html#contact" class="btn">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Loading screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Redirecting to appropriate version...</div>
+    </div>
 
-    <main>
-        <section class="thank-you-container">
-            <i class="fas fa-check-circle thank-you-icon"></i>
-            <h1>Thank You!</h1>
-            <p>Your message has been successfully sent. We appreciate you contacting Fundraisers United. We will get back to you as soon as possible.</p>
-            <a href="index.html" class="btn primary">Return to Homepage</a>
-        </section>
-    </main>
+    <div class="thank-you-container">
+        <i class="fas fa-check-circle thank-you-icon"></i>
+        <h1>Thank You!</h1>
+        <p>Your message has been successfully sent. We appreciate you contacting Fundraisers United. We will get back to you as soon as possible.</p>
+        <a href="index.html" class="btn">Return to Homepage</a>
+    </div>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/fundraisers-united-logo.png" alt="Fundraisers United Logo">
-                    <p>Australia's Premier F2F Fundraising Agency</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#approach">Our Approach</a></li>
-                        <li><a href="index.html#dignity">Dignity in Fundraising</a></li>
-                        <li><a href="index.html#join">Join Our Team</a></li>
-                        <li><a href="index.html#charities">For Charities</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-legal">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="pfra-compliance.html">PFRA Compliance</a></li>
-                    </ul>
-                </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/Logo_FRU Brandmark.png" alt="Fundraisers United Logo">
+                <p>Australia's Premier F2F Fundraising Agency</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Fundraisers United. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#approach">Our Approach</a></li>
+                    <li><a href="index.html#dignity">Dignity in Fundraising</a></li>
+                    <li><a href="index.html#join">Join Our Team</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
             </div>
+            <div class="footer-legal">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="pfra-compliance.html">PFRA Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Fundraisers United. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loader');
+            
+            // Function to detect mobile devices
+            function isMobileDevice() {
+                // Check for mobile user agent
+                const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                // Check viewport width
+                const isMobileWidth = window.innerWidth <= 840;
+                
+                // Consider a device mobile if it has a mobile user agent OR small screen width
+                return mobileUserAgent || isMobileWidth;
+            }
+            
+            // Get current page name
+            const pageName = window.location.pathname.split('/').pop();
+            
+            // If we're on thank-you.html, let's redirect to the appropriate version
+            if (pageName === 'thank-you.html') {
+                // Modify links on page to point to correct version
+                const homeLinks = document.querySelectorAll('a[href="index.html"]');
+                const otherLinks = document.querySelectorAll('a:not([href="index.html"])');
+                
+                if (isMobileDevice()) {
+                    // Update links for mobile
+                    homeLinks.forEach(link => {
+                        link.setAttribute('href', 'mobile-index.html');
+                    });
+                    
+                    otherLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href && href.startsWith('index.html#')) {
+                            link.setAttribute('href', 'mobile-index.html' + href.substring(10));
+                        }
+                    });
+                } else {
+                    // Update links for desktop
+                    homeLinks.forEach(link => {
+                        link.setAttribute('href', 'desktop-index.html');
+                    });
+                    
+                    otherLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href && href.startsWith('index.html#')) {
+                            link.setAttribute('href', 'desktop-index.html' + href.substring(10));
+                        }
+                    });
+                }
+            }
+            
+            // Hide loader after links are updated
+            setTimeout(function() {
+                loader.style.display = 'none';
+            }, 1000);
+        });
+    </script>
 </body>
 </html> 

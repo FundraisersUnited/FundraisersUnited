@@ -295,21 +295,19 @@ nav {
 
 @keyframes logoPulse {
     0% {
-        filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.2));
+        filter: drop-shadow(0 0 10px rgba(255, 51, 51, 0.2));
     }
     50% {
         filter: drop-shadow(0 0 18px rgba(255, 51, 51, 0.4));
     }
     100% {
-        filter: drop-shadow(0 0 15px rgba(230, 57, 70, 0.3));
+        filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.3));
     }
 }
 
 .logo a:hover img {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
-    background: none;
-    animation-play-state: paused;
+    filter: drop-shadow(0 4px 8px rgba(255, 51, 51, 0.5));
 }
 
 .logo a:after {
@@ -1484,31 +1482,31 @@ footer:before {
     object-fit: contain !important;
     aspect-ratio: 1.8 / 1 !important;
     margin-bottom: 20px !important;
-    filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 51, 51, 0.5)) !important;
+    filter: drop-shadow(0 0 12px rgba(255, 51, 51, 0.3)) !important;
     padding: 15px;
     border-radius: 15px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation: footerLogoPulse 5s ease-in-out infinite alternate;
     display: block !important;
+    background: rgba(21, 25, 30, 0.4);
 }
 
 @keyframes footerLogoPulse {
     0% {
-        filter: brightness(1.2) drop-shadow(0 0 8px rgba(230, 57, 70, 0.3));
+        filter: drop-shadow(0 0 8px rgba(255, 51, 51, 0.3));
     }
     50% {
-        filter: brightness(1.3) drop-shadow(0 0 15px rgba(255, 51, 51, 0.4));
+        filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.5));
     }
     100% {
-        filter: brightness(1.2) drop-shadow(0 0 12px rgba(230, 57, 70, 0.5));
+        filter: drop-shadow(0 0 12px rgba(255, 51, 51, 0.4));
     }
 }
 
 .footer-logo img:hover {
     transform: translateY(-5px) scale(1.05);
-    filter: brightness(1.6) drop-shadow(0 0 20px rgba(114, 9, 183, 0.5));
-    background: none;
-    animation-play-state: paused;
+    filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.5));
+    background: rgba(21, 25, 30, 0.2);
 }
 
 .footer-logo p {
@@ -1994,7 +1992,12 @@ nav.fixed-nav * {
     height: 40px;
     width: auto;
     transition: all 0.5s ease;
-    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 2px 5px rgba(255, 51, 51, 0.3));
+}
+
+.fixed-nav .logo a:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(255, 51, 51, 0.5));
 }
 
 .fixed-nav .nav-links {
@@ -2364,12 +2367,13 @@ main {
 }
 
 .fixed-nav .slogan-container .tagline {
-    color: white;
+    color: var(--primary-color);
     font-size: 1rem;
     font-weight: 500;
     margin: 0;
     letter-spacing: 0.5px;
     font-family: var(--font-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Media queries adjustments for slogan */

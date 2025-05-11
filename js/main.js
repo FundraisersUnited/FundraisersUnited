@@ -183,57 +183,62 @@ document.addEventListener('DOMContentLoaded', function() {
         // Simplified and more reliable scroll check function
         function checkScroll() {
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            const isMobile = window.innerWidth <= 767;
             
             if (scrollPosition > 100) { // Fixed threshold instead of dynamic
                 // Apply fixed nav
                 nav.classList.add('fixed-nav');
                 document.body.classList.add('scrolled');
                 header.classList.add('scrolled');
-                document.body.style.paddingTop = nav.offsetHeight + 'px';
                 
-                // Force display properties inline
-                nav.style.display = 'flex';
-                nav.style.visibility = 'visible';
-                nav.style.opacity = '1';
-                nav.style.zIndex = '9999';
-                
-                // Logo elements
-                const logoElement = nav.querySelector('.logo');
-                const logoLink = nav.querySelector('.logo a');
-                const logoImg = nav.querySelector('.logo img');
-                
-                if (logoElement) {
-                    logoElement.style.display = 'flex';
-                    logoElement.style.visibility = 'visible';
-                    logoElement.style.opacity = '1';
-                }
-                
-                if (logoLink) {
-                    logoLink.style.display = 'flex';
-                    logoLink.style.visibility = 'visible';
-                    logoLink.style.opacity = '1';
-                }
-                
-                if (logoImg) {
-                    logoImg.style.display = 'block';
-                    logoImg.style.visibility = 'visible';
-                    logoImg.style.opacity = '1';
-                }
-                
-                // Slogan container
-                const sloganContainer = nav.querySelector('.slogan-container');
-                if (sloganContainer) {
-                    sloganContainer.style.display = 'flex';
-                    sloganContainer.style.visibility = 'visible';
-                    sloganContainer.style.opacity = '1';
-                }
-                
-                // Nav links
-                const navLinksElement = nav.querySelector('.nav-links');
-                if (navLinksElement) {
-                    navLinksElement.style.display = 'flex';
-                    navLinksElement.style.visibility = 'visible';
-                    navLinksElement.style.opacity = '1';
+                // Only adjust padding top on desktop
+                if (!isMobile) {
+                    document.body.style.paddingTop = nav.offsetHeight + 'px';
+                    
+                    // Force display properties inline for desktop only
+                    nav.style.display = 'flex';
+                    nav.style.visibility = 'visible';
+                    nav.style.opacity = '1';
+                    nav.style.zIndex = '9999';
+                    
+                    // Logo elements
+                    const logoElement = nav.querySelector('.logo');
+                    const logoLink = nav.querySelector('.logo a');
+                    const logoImg = nav.querySelector('.logo img');
+                    
+                    if (logoElement) {
+                        logoElement.style.display = 'flex';
+                        logoElement.style.visibility = 'visible';
+                        logoElement.style.opacity = '1';
+                    }
+                    
+                    if (logoLink) {
+                        logoLink.style.display = 'flex';
+                        logoLink.style.visibility = 'visible';
+                        logoLink.style.opacity = '1';
+                    }
+                    
+                    if (logoImg) {
+                        logoImg.style.display = 'block';
+                        logoImg.style.visibility = 'visible';
+                        logoImg.style.opacity = '1';
+                    }
+                    
+                    // Slogan container
+                    const sloganContainer = nav.querySelector('.slogan-container');
+                    if (sloganContainer) {
+                        sloganContainer.style.display = 'flex';
+                        sloganContainer.style.visibility = 'visible';
+                        sloganContainer.style.opacity = '1';
+                    }
+                    
+                    // Nav links
+                    const navLinksElement = nav.querySelector('.nav-links');
+                    if (navLinksElement) {
+                        navLinksElement.style.display = 'flex';
+                        navLinksElement.style.visibility = 'visible';
+                        navLinksElement.style.opacity = '1';
+                    }
                 }
             } else {
                 // Reset to default
@@ -740,6 +745,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupResponsiveLayout() {
         const hero = document.querySelector('.hero');
         const header = document.querySelector('header');
+        const tagline = document.querySelector('header .tagline');
+        const brandTitle = document.querySelector('.brand-title');
         const isMobile = window.innerWidth <= 768;
         
         if (hero && header) {
@@ -753,6 +760,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 hero.style.alignItems = 'center';
                 hero.style.textAlign = 'center';
                 header.style.minHeight = '550px';
+                
+                // Ensure proper spacing between brand title and tagline
+                if (brandTitle && tagline) {
+                    // Properly position tagline below the red line
+                    tagline.style.marginTop = '35px';
+                    tagline.style.display = 'block';
+                    
+                    // Fix scrolling issues by hiding duplicates
+                    if (window.pageYOffset > 100) {
+                        brandTitle.style.display = 'none';
+                        tagline.style.display = 'none';
+                    } else {
+                        brandTitle.style.display = 'flex';
+                        tagline.style.display = 'block';
+                    }
+                }
             } else {
                 // Desktop view
                 hero.style.position = 'absolute';
@@ -760,6 +783,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 hero.style.textAlign = 'center'; // Center for desktop
                 hero.style.width = '100%';
                 hero.style.height = '100%';
+                
+                // Reset any mobile-specific styles
+                if (tagline) {
+                    tagline.style.marginTop = '';
+                }
+                if (brandTitle) {
+                    brandTitle.style.display = 'none';
+                }
             }
         }
     }

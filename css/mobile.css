@@ -93,7 +93,7 @@
 
     /* Properly space the tagline from the red line */
     header .tagline {
-        margin-top: 20px;
+        margin-top: 35px; /* Increased to create more space below the red line */
         display: block;
         color: white;
         font-size: 1.2rem;
@@ -118,7 +118,7 @@
     }
 
     .fixed-nav {
-        display: none;
+        display: none !important; /* Added !important to ensure it's hidden on mobile */
     }
 
     /* Hide desktop-only elements on mobile */
@@ -135,5 +135,18 @@
     .hero-buttons .btn {
         padding: 14px 24px;
         font-size: 1rem;
+    }
+
+    /* Prevent duplicate FUNDRAISERS UNITED text when scrolling */
+    header.scrolled .brand-title,
+    header.scrolled .tagline,
+    body.scrolled .brand-title,
+    body.scrolled header .tagline {
+        display: none !important;
+    }
+
+    /* Fix scrolling issues */
+    body.scrolled header {
+        display: none !important;
     }
 } 

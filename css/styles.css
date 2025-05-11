@@ -1676,111 +1676,167 @@ footer:before {
     }
     
     .logo img {
-        max-width: 65%;
+        max-width: 200px;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px 15px 40px;
+        margin-top: 40px;
+    }
+    
+    .hero .tagline {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     
     .nav-links {
+        width: 100%;
+        justify-content: center;
         flex-wrap: wrap;
+        background: rgba(21, 25, 30, 0.95);
+        padding: 10px 0;
+        position: fixed;
+        left: 0;
         bottom: 0;
+        z-index: 100;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     }
     
     .nav-links li {
-        margin: 8px;
+        margin: 5px 10px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
     }
     
     section {
-        padding: 60px 0;
+        padding: 50px 0;
     }
     
-    footer {
-        padding: 60px 0 0;
+    .container {
+        width: 92%;
+        padding: 0 10px;
     }
     
-    .footer-logo img {
-        max-height: 80px !important;
-        padding: 10px;
+    .fixed-nav {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        background: rgba(21, 25, 30, 0.95);
     }
-
-    .hero h1 {
-        font-size: 2.5rem;
+    
+    .fixed-nav .logo {
+        margin: 0;
+        padding: 0;
+        height: auto;
     }
-
-    .hero .tagline {
-        font-size: 1.4rem;
+    
+    .fixed-nav .logo a {
+        align-items: center;
+        gap: 8px;
     }
-
-    .hero p {
-        font-size: 1.1rem;
+    
+    .fixed-nav .logo a img {
+        height: 35px;
+        margin-right: 8px;
     }
-
-    .hero-buttons {
+    
+    .fixed-nav .nav-toggle {
+        display: block;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .fixed-nav .nav-toggle:active {
+        background: rgba(255, 51, 51, 0.2);
+    }
+    
+    .fixed-nav .nav-links.active {
+        display: flex !important;
         flex-direction: column;
-        gap: 15px;
-    }
-
-    .services-grid,
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stats-description {
-        font-size: 0.95rem;
-    }
-
-    .indicative-label {
-        font-size: 0.7rem;
-    }
-
-    .join-text ul li {
-        padding-left: 2.5rem;
-    }
-
-    .leadership-profile {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(21, 25, 30, 0.98);
         padding: 20px 15px;
+        z-index: 1000;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        animation: slideInDown 0.3s forwards;
     }
     
-    .profile-content {
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .fixed-nav .nav-links.active li {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .fixed-nav .nav-links.active a {
+        display: block;
+        padding: 12px;
+        width: 100%;
+        border-radius: 8px;
+    }
+    
+    .fixed-nav .nav-links.active a:not(.btn):hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .fixed-nav .nav-links.active .btn {
+        width: 100%;
+        margin: 10px 0 0;
+    }
+    
+    .footer-logo {
+        display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
     
-    .profile-image {
-        margin-bottom: 20px;
-    }
-    
-    .profile-image-placeholder {
-        width: 160px;
-        height: 160px;
-        font-size: 2.8rem;
-    }
-    
-    .profile-image-photo {
-        width: 160px;
-        height: 220px;
-    }
-    
-    .profile-highlights li {
-        padding-left: 0;
-        text-align: left;
-    }
-    
-    .profile-highlights li:before {
-        position: relative;
-        left: -10px;
-    }
-    
-    .profile-text p:last-child {
-        text-align: left;
-    }
-
-    .footer-info-container {
-        padding: 15px;
-        margin-top: 15px;
-    }
-    
-    .footer-info-container p {
-        font-size: 0.8rem;
+    .footer-logo img {
+        max-height: 80px !important;
+        padding: 10px;
+        margin: 0 auto 15px;
     }
 }
 
@@ -1871,80 +1927,18 @@ footer:before {
         margin-bottom: 20px;
     }
 
-    .leadership-profile {
-        padding: 20px 15px;
+    .footer-logo img {
+        max-height: 70px !important;
+        padding: 8px;
     }
     
-    .profile-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
+    .footer-info-container {
+        padding: 15px;
+        margin-top: 15px;
     }
     
-    .profile-image {
-        margin-bottom: 5px;
-    }
-    
-    .profile-image-placeholder {
-        width: 140px;
-        height: 140px;
-        font-size: 2.5rem;
-    }
-    
-    .profile-image-photo {
-        width: 140px;
-        height: 200px;
-    }
-    
-    .profile-highlights {
-        text-align: left;
-    }
-    
-    .profile-highlights li {
-        padding-left: 25px;
-    }
-    
-    .profile-highlights li:before {
-        position: absolute;
-        left: 8px;
-    }
-    
-    .profile-text h4 {
-        font-size: 1.4rem;
-    }
-    
-    .profile-text p:last-child {
-        text-align: left;
-        font-size: 0.95rem;
-    }
-
-    .contact-info {
-        padding: 25px 20px;
-    }
-    
-    .info-item {
-        margin-bottom: 20px;
-    }
-    
-    .info-item i {
-        font-size: 1.2rem;
-        min-width: 20px;
-    }
-    
-    .info-item p {
-        font-size: 0.95rem;
-    }
-    
-    .social-links {
-        margin-top: 25px;
-        gap: 10px;
-    }
-    
-    .social-links a {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
+    .footer-info-container p {
+        font-size: 0.8rem;
     }
 }
 
@@ -2306,105 +2300,22 @@ main {
     line-height: 1.2;
 }
 
-/* Responsive styles for fixed nav */
-@media screen and (max-width: 992px) {
-    .fixed-nav {
-        padding: 0 20px;
+/* Ultra small mobile screens */
+@media screen and (max-width: 380px) {
+    .hero h1 {
+        font-size: 1.8rem;
     }
     
-    .fixed-nav .logo a {
-        font-size: 2rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .fixed-nav {
-        flex-direction: row;
-        padding: 10px 15px;
-        height: auto;
-        min-height: 60px;
+    .hero .tagline {
+        font-size: 1.1rem;
     }
     
-    .fixed-nav .logo {
-        margin-right: 0;
-        height: auto;
-        min-height: auto;
-        display: flex;
-        align-items: center;
-    }
-    
-    .fixed-nav .logo a {
-        display: flex;
-        align-items: center;
+    .fixed-nav .logo a span {
+        font-size: 0.8rem;
     }
     
     .fixed-nav .logo a img {
         height: 30px;
-        margin-right: 8px;
-    }
-    
-    .fixed-nav .logo a span {
-        font-size: 1rem;
-        display: inline-block;
-    }
-    
-    .fixed-nav .nav-links {
-        justify-content: flex-end;
-    }
-    
-    .footer-logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-logo img {
-        max-height: 80px !important;
-        padding: 10px;
-        margin: 0 auto 15px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .fixed-nav {
-        padding: 8px 10px;
-        min-height: 50px;
-    }
-    
-    .fixed-nav .logo a img {
-        height: 25px;
-        margin-right: 5px;
-    }
-    
-    .fixed-nav .logo a span {
-        font-size: 0.9rem;
-    }
-    
-    .fixed-nav .nav-toggle {
-        font-size: 1.2rem;
-    }
-    
-    .footer-logo img {
-        max-height: 70px !important;
-        padding: 8px;
-    }
-    
-    /* Ensure navigation menu works properly on mobile */
-    .nav-links.active {
-        display: flex !important;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(21, 25, 30, 0.95);
-        padding: 15px;
-        z-index: 1000;
-    }
-    
-    .nav-links.active li {
-        margin: 8px 0;
     }
 }
 
@@ -2423,36 +2334,6 @@ main {
     letter-spacing: 0.5px;
     font-family: var(--font-primary);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Media queries adjustments for slogan */
-@media screen and (max-width: 992px) {
-    .fixed-nav .slogan-container {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-    }
-    
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-    }
-    
-    .fixed-nav .nav-links {
-        margin-left: 0;
-        position: absolute;
-        flex-direction: column;
-        align-items: center;
-        padding: 15px 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
 }
 
 /* Touch device optimizations */
@@ -2480,18 +2361,99 @@ main {
     }
 }
 
-/* Mobile-specific transitions */
+/* Media queries adjustments for slogan */
+@media screen and (max-width: 992px) {
+    .fixed-nav .slogan-container {
+        display: none;
+    }
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile hero optimizations */
 @media screen and (max-width: 768px) {
-    .nav-links {
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
+    .hero-content {
+        padding: 0 15px;
+        width: 100%;
+        text-align: center;
     }
     
-    .nav-links.active {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+    
+    /* Fix spacing below logo */
+    header {
+        padding-bottom: 0;
+    }
+}
+
+/* Mobile Bottom Navigation Bar */
+@media screen and (max-width: 768px) {
+    .mobile-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(21, 25, 30, 0.98);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+    
+    .mobile-nav-item {
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.7rem;
+        text-decoration: none;
+        padding: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-item i {
+        font-size: 1.3rem;
+        margin-bottom: 4px;
+    }
+    
+    .mobile-nav-item.active {
+        color: var(--primary-color);
+    }
+    
+    .mobile-nav-item:hover {
+        color: white;
+    }
+    
+    /* Add padding to the bottom of the page to account for fixed nav */
+    body {
+        padding-bottom: 65px;
+    }
+    
+    main {
+        padding-bottom: 20px;
+    }
+    
+    footer {
+        padding-bottom: 80px;
     }
 } 

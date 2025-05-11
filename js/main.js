@@ -697,4 +697,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize animations on page load
     animateElements();
+    
+    // Update mobile navigation active state on scroll
+    function updateMobileNavActiveState() {
+        const sections = document.querySelectorAll('section');
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        
+        let currentSectionId = '';
+        
+        // Find the current section based on scroll position
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (window.pageYOffset >= sectionTop - 200 && 
+                window.pageYOffset < sectionTop + sectionHeight - 200) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+        
+        // Update active state on mobile nav items
+        mobileNavItems.forEach(item => {
+            // Remove active class from all items
+            item.classList.remove('active');
+            
+            // Get the href attribute and extract the section id
+            const href = item.getAttribute('href');
+            const itemSectionId = href.substring(1); // Remove the # character
+            
+            // Add active class if this item points to the current section
+            if (itemSectionId === currentSectionId) {
+                item.classList.add('active');
+            }
+        });
+    }
+    
+    // Run the function on scroll and page load
+    window.addEventListener('scroll', updateMobileNavActiveState);
+    window.addEventListener('load', updateMobileNavActiveState);
 }); 

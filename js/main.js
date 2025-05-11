@@ -62,6 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     logoImg.style.opacity = '1';
                 }
                 
+                // Slogan container
+                const sloganContainer = nav.querySelector('.slogan-container');
+                if (sloganContainer) {
+                    sloganContainer.style.display = 'flex';
+                    sloganContainer.style.visibility = 'visible';
+                    sloganContainer.style.opacity = '1';
+                }
+                
                 // Links
                 const navLinksElement = nav.querySelector('.nav-links');
                 if (navLinksElement) {
@@ -186,6 +194,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     logoImg.style.opacity = '1';
                 }
                 
+                // Slogan container
+                const sloganContainer = nav.querySelector('.slogan-container');
+                if (sloganContainer) {
+                    sloganContainer.style.display = 'flex';
+                    sloganContainer.style.visibility = 'visible';
+                    sloganContainer.style.opacity = '1';
+                }
+                
                 // Nav links
                 const navLinksElement = nav.querySelector('.nav-links');
                 if (navLinksElement) {
@@ -223,6 +239,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     logo.style.display = '';
                     logo.style.visibility = '';
                     logo.style.opacity = '';
+                }
+                
+                // Reset slogan container
+                const sloganContainer = nav.querySelector('.slogan-container');
+                if (sloganContainer) {
+                    sloganContainer.style.display = '';
+                    sloganContainer.style.visibility = '';
+                    sloganContainer.style.opacity = '';
                 }
                 
                 const navLinksElement = nav.querySelector('.nav-links');

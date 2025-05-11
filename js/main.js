@@ -735,4 +735,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run the function on scroll and page load
     window.addEventListener('scroll', updateMobileNavActiveState);
     window.addEventListener('load', updateMobileNavActiveState);
+    
+    // Fix hero section layout
+    function fixHeroLayout() {
+        const hero = document.querySelector('.hero');
+        const header = document.querySelector('header');
+        
+        if (hero && header) {
+            // Make hero visible (it may be hidden in CSS initially)
+            hero.style.display = 'flex';
+            
+            // Ensure correct z-index order
+            hero.style.zIndex = '5';
+            
+            // Set visibility and position for mobile view
+            if (window.innerWidth <= 768) {
+                header.style.minHeight = '550px';
+                hero.style.position = 'relative';
+            }
+        }
+    }
+    
+    // Run hero layout fix on page load and resize
+    window.addEventListener('load', fixHeroLayout);
+    window.addEventListener('resize', fixHeroLayout);
 }); 

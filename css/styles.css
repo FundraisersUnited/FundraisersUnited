@@ -415,36 +415,39 @@ nav {
 }
 
 .hero {
-    display: none;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px 40px;
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero h1 {
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: 3.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
     font-weight: 800;
     color: white;
-    max-width: 900px;
     position: relative;
     animation: fadeInUp 1s ease-out;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.hero h1::after {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 6px;
-    background: var(--gradient-primary);
-    bottom: -20px;
-    left: 0;
-    border-radius: 3px;
-    box-shadow: 0 2px 10px rgba(255, 51, 51, 0.3);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero .tagline {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -454,20 +457,99 @@ nav {
     font-family: var(--font-primary);
 }
 
-.hero p {
-    font-size: 1.5rem;
-    max-width: 650px;
-    margin-bottom: 3rem;
+.brand-title {
+    margin: 0.5rem 0 1.5rem;
     animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.brand-title h2 {
+    font-size: 3.5rem;
+    line-height: 1;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.brand-title h2:after {
+    display: none;
+}
+
+.hero-description {
+    font-size: 1.4rem;
+    max-width: 650px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .hero-buttons {
     display: flex;
     gap: 20px;
     animation: fadeInUp 1s ease-out 0.4s both;
+    width: 100%;
+    max-width: 450px;
+    justify-content: center;
+}
+
+/* Mobile Optimizations for Hero Section */
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 10px 15px 30px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    .hero .tagline {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .brand-title {
+        margin: 0.5rem 0 1rem;
+    }
+    
+    .brand-title h2 {
+        font-size: 2.4rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        max-width: 280px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        padding: 12px 20px;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .brand-title h2 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
 }
 
 /* About Section */
@@ -1682,29 +1764,17 @@ footer:before {
     }
     
     .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 20px 15px 40px;
-        margin-top: 40px;
-    }
-    
-    .hero .tagline {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        font-weight: 600;
-        line-height: 1.4;
+        padding: 10px 15px 30px;
     }
     
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
         line-height: 1.3;
-        margin-bottom: 1rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero .tagline {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
     }
     
     .nav-links {
@@ -2402,58 +2472,190 @@ main {
     }
 }
 
-/* Mobile Bottom Navigation Bar */
-@media screen and (max-width: 768px) {
-    .mobile-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(21, 25, 30, 0.98);
-        display: flex;
-        justify-content: space-around;
-        padding: 10px 0;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-    }
-    
-    .mobile-nav-item {
-        text-align: center;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.7rem;
-        text-decoration: none;
-        padding: 5px;
-        transition: all 0.3s ease;
-    }
-    
-    .mobile-nav-item i {
-        font-size: 1.3rem;
-        margin-bottom: 4px;
-    }
-    
-    .mobile-nav-item.active {
+/* Enhanced Mobile Bottom Navigation */
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(21, 25, 30, 0.95);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 5px 8px;
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.mobile-nav-item {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    text-decoration: none;
+    padding: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-nav-item i {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-item.active {
+    color: var(--primary-color);
+}
+
+.mobile-nav-item.active:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--primary-color);
+}
+
+.mobile-nav-item:active {
+    transform: scale(0.95);
+}
+
+@media (hover: hover) {
+    .mobile-nav-item:hover {
         color: var(--primary-color);
     }
     
-    .mobile-nav-item:hover {
-        color: white;
+    .mobile-nav-item:hover i {
+        transform: translateY(-3px);
     }
-    
-    /* Add padding to the bottom of the page to account for fixed nav */
+}
+
+/* Create space for mobile navigation */
+@media screen and (max-width: 768px) {
     body {
-        padding-bottom: 65px;
-    }
-    
-    main {
-        padding-bottom: 20px;
+        padding-bottom: 70px;
     }
     
     footer {
-        padding-bottom: 80px;
+        padding-bottom: 70px;
     }
-} 
+}
+
+/* Section headers for mobile */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    h2:after {
+        margin: 20px auto 0;
+        width: 60px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    section:first-of-type {
+        padding-top: 40px;
+    }
+    
+    .container {
+        width: 90%;
+        padding: 0 15px;
+    }
+    
+    /* Space between sections for easier scrolling */
+    section + section {
+        margin-top: 10px;
+    }
+    
+    /* Improve section background and visual boundaries */
+    section:nth-child(even) {
+        background-color: rgba(248, 249, 250, 0.6);
+    }
+}
+
+/* Add spacing between elements in mobile view */
+@media screen and (max-width: 768px) {
+    .services-grid, 
+    .approach-content, 
+    .dignity-benefits {
+        gap: 20px;
+    }
+    
+    .service-card, 
+    .approach-item, 
+    .dignity-benefit-item {
+        padding: 25px 20px;
+    }
+}
+
+/* Mobile-specific header improvements */
+@media screen and (max-width: 768px) {
+    header {
+        position: relative;
+        min-height: auto; /* Let the content determine the height */
+        padding-top: 80px; /* Space for the fixed navigation */
+        display: block;
+        overflow: visible;
+    }
+    
+    .logo {
+        margin-top: 20px;
+        min-height: 120px;
+        max-height: 180px;
+    }
+    
+    .logo img {
+        max-width: 200px;
+    }
+    
+    /* Fix the fixed-nav styling for mobile */
+    .fixed-nav {
+        height: 60px;
+        padding: 0 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .fixed-nav .logo {
+        margin: 0;
+        padding: 0;
+        min-height: auto;
+        height: auto;
+    }
+    
+    .fixed-nav .logo a {
+        display: flex;
+        align-items: center;
+    }
+    
+    .fixed-nav .logo a img {
+        height: 35px;
+        max-height: 35px;
+        margin-right: 10px;
+    }
+    
+    .fixed-nav .logo a span {
+        display: inline-block;
+        font-size: 1.1rem;
+    }
+    
+    /* Better spacing in the hero section */
+    .brand-title {
+        margin: 1rem 0 1.5rem;
+    }
+}

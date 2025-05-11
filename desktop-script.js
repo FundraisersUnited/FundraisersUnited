@@ -74,11 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Initial check for pre-filled inputs
             if (input.value !== '') {
                 input.classList.add('has-value');
+                input.parentElement.classList.add('focused');
             }
             
             // Focus events
             input.addEventListener('focus', () => {
                 input.classList.add('focused');
+                input.parentElement.classList.add('focused');
+                
+                // Ensure the label is visible
+                const label = input.parentElement.querySelector('label');
+                if (label) {
+                    label.style.color = 'var(--text-light)';
+                    label.style.opacity = '1';
+                }
             });
             
             input.addEventListener('blur', () => {
@@ -89,6 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     input.classList.add('has-value');
                 }
             });
+            
+            // For select elements, ensure options are visible
+            if (input.tagName.toLowerCase() === 'select') {
+                input.style.color = 'var(--text-light)';
+                
+                // Set option colors for better visibility
+                const options = input.querySelectorAll('option');
+                options.forEach(option => {
+                    option.style.backgroundColor = '#333';
+                    option.style.color = 'white';
+                });
+            }
+        });
+        
+        // Ensure all labels are visible
+        const labels = contactForm.querySelectorAll('label');
+        labels.forEach(label => {
+            label.style.color = 'var(--text-light)';
+            label.style.opacity = '1';
+            label.style.fontWeight = '500';
         });
         
         // Form submission
@@ -229,4 +258,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Fix for contact form in desktop view to ensure labels and inputs are visible
+    const fixContactForm = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            // Ensure form elements have sufficient contrast
+            const formElements = contactSection.querySelectorAll('input, textarea, select');
+            formElements.forEach(element => {
+                element.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                element.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+                element.style.color = 'white';
+            });
+            
+            // Make sure the submit button is clearly visible
+            const submitButton = contactSection.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.style.backgroundColor = 'var(--primary)';
+                submitButton.style.color = 'white';
+                submitButton.style.fontWeight = 'bold';
+                submitButton.style.padding = '16px';
+            }
+        }
+    };
+    
+    // Run the fix on page load
+    fixContactForm();
 }); 

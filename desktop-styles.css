@@ -680,6 +680,8 @@ section:nth-child(even) {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
+    color: var(--text-light);
+    font-size: 1.05rem;
 }
 
 .form-group input,
@@ -687,24 +689,45 @@ section:nth-child(even) {
 .form-group textarea {
     width: 100%;
     padding: 14px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-light);
     border-radius: var(--border-radius);
     transition: var(--transition);
+    font-size: 1rem;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: var(--primary);
     outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 51, 51, 0.25);
 }
 
 .form-group textarea {
     resize: vertical;
     min-height: 140px;
+}
+
+.contact-form button.btn-primary {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    background-color: var(--primary);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button.btn-primary:hover {
+    background-color: #ff4545;
+    transform: translateY(-3px);
 }
 
 .contact-info {

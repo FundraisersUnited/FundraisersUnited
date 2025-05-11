@@ -144,11 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check initial state
             if (input.value !== '') {
                 input.classList.add('has-value');
+                input.parentElement.classList.add('focused');
             }
             
             // Focus events
             input.addEventListener('focus', () => {
                 input.parentElement.classList.add('focused');
+                // Ensure the label is fully visible
+                const label = input.parentElement.querySelector('label');
+                if (label) {
+                    label.style.color = 'var(--text-light)';
+                    label.style.opacity = '1';
+                }
             });
             
             input.addEventListener('blur', () => {
@@ -159,6 +166,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     input.classList.add('has-value');
                 }
             });
+            
+            // For select elements, ensure the options are visible
+            if (input.tagName.toLowerCase() === 'select') {
+                input.style.color = 'var(--text-light)';
+                input.style.opacity = '1';
+                
+                // Also ensure options have good contrast
+                const options = input.querySelectorAll('option');
+                options.forEach(option => {
+                    option.style.color = '#333';
+                    option.style.backgroundColor = '#fff';
+                });
+            }
+        });
+        
+        // Ensure all labels are visible
+        const labels = contactForm.querySelectorAll('label');
+        labels.forEach(label => {
+            label.style.color = 'var(--text-light)';
+            label.style.opacity = '1';
         });
         
         // Handle form submission
@@ -282,4 +309,41 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize the active bottom nav item on page load
     updateActiveNavOnScroll();
+    
+    // Fix for contact form in mobile view to ensure labels and inputs are visible
+    const fixContactForm = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            // Ensure form elements have sufficient contrast
+            const formElements = contactSection.querySelectorAll('input, textarea, select');
+            formElements.forEach(element => {
+                element.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                element.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+                element.style.color = 'white';
+                
+                // Ensure placeholder text is visible
+                element.setAttribute('placeholder', element.getAttribute('placeholder') || '');
+            });
+            
+            // Make sure labels are visible
+            const labels = contactSection.querySelectorAll('label');
+            labels.forEach(label => {
+                label.style.color = 'white';
+                label.style.opacity = '1';
+                label.style.fontWeight = '500';
+            });
+            
+            // Make sure the submit button is clearly visible
+            const submitButton = contactSection.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.style.backgroundColor = 'var(--primary)';
+                submitButton.style.color = 'white';
+                submitButton.style.fontWeight = 'bold';
+                submitButton.style.padding = '16px';
+            }
+        }
+    };
+    
+    // Run the fix on page load
+    fixContactForm();
 }); 

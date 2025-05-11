@@ -736,27 +736,33 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateMobileNavActiveState);
     window.addEventListener('load', updateMobileNavActiveState);
     
-    // Fix hero section layout
-    function fixHeroLayout() {
+    // Fix hero section layout for both desktop and mobile
+    function setupResponsiveLayout() {
         const hero = document.querySelector('.hero');
         const header = document.querySelector('header');
+        const isMobile = window.innerWidth <= 768;
         
         if (hero && header) {
-            // Make hero visible (it may be hidden in CSS initially)
-            hero.style.display = 'flex';
+            // Make hero visible
+            hero.style.display = isMobile ? 'flex' : 'flex';
             
-            // Ensure correct z-index order
-            hero.style.zIndex = '5';
-            
-            // Set visibility and position for mobile view
-            if (window.innerWidth <= 768) {
-                header.style.minHeight = '550px';
+            // Apply appropriate positioning based on device
+            if (isMobile) {
+                // Mobile view
                 hero.style.position = 'relative';
+                hero.style.alignItems = 'center';
+                hero.style.textAlign = 'center';
+                header.style.minHeight = '550px';
+            } else {
+                // Desktop view
+                hero.style.position = 'absolute';
+                hero.style.alignItems = 'flex-start';
+                hero.style.textAlign = 'left';
             }
         }
     }
     
-    // Run hero layout fix on page load and resize
-    window.addEventListener('load', fixHeroLayout);
-    window.addEventListener('resize', fixHeroLayout);
+    // Run layout fixes on page load and resize
+    window.addEventListener('load', setupResponsiveLayout);
+    window.addEventListener('resize', setupResponsiveLayout);
 }); 

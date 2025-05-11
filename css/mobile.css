@@ -1,0 +1,139 @@
+/* Mobile-specific Styles */
+:root {
+    --primary-color: #FF3333;
+    --secondary-color: #3a0ca3;
+    --accent-color: #e63946;
+    --accent-light: #ff6b6b;
+    --light-color: #f8f9fa;
+    --dark-color: #15191e;
+    --text-color: #495057;
+}
+
+@media (max-width: 767px) {
+    /* Mobile navigation styles */
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(30, 30, 44, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        justify-content: space-around;
+        padding: 12px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.75rem;
+        padding: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav a i {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+
+    .mobile-nav a:hover, 
+    .mobile-nav a.active {
+        color: var(--primary-color);
+    }
+
+    /* Brand title styles - updated for better visibility */
+    .brand-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    /* Change the h2 to match the current structure */
+    .brand-title h2 {
+        text-align: center;
+        color: white;
+        font-weight: 800;
+        line-height: 1;
+        font-family: var(--font-primary);
+        letter-spacing: 1px;
+    }
+
+    .brand-title h2:first-child {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+    }
+
+    .brand-title h2:last-child {
+        font-size: 2.2rem; /* Make UNITED larger */
+        margin-top: -2px; /* Move UNITED up to connect with FUNDRAISERS */
+        font-weight: 900; /* Make it bolder */
+    }
+
+    /* Add red line separator between title and tagline */
+    .brand-title:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: 15px auto 0;
+        border-radius: 2px;
+    }
+
+    /* Properly space the tagline from the red line */
+    header .tagline {
+        margin-top: 20px;
+        display: block;
+        color: white;
+        font-size: 1.2rem;
+        opacity: 0.9;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main logo adjustments */
+    .logo {
+        min-height: auto;
+        padding: 15px 0;
+        margin-top: 20px;
+    }
+
+    .logo img {
+        max-width: 85%;
+    }
+
+    /* Hide desktop elements */
+    .nav-links {
+        display: none;
+    }
+
+    .fixed-nav {
+        display: none;
+    }
+
+    /* Hide desktop-only elements */
+    header h1,
+    header .hero-description {
+        display: none;
+    }
+
+    /* Make the hero buttons more prominent on mobile */
+    .hero-buttons {
+        margin-top: 25px;
+    }
+
+    .hero-buttons .btn {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+} 

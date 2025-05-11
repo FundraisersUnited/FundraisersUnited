@@ -744,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (hero && header) {
             // Make hero visible
-            hero.style.display = isMobile ? 'flex' : 'flex';
+            hero.style.display = 'flex';
             
             // Apply appropriate positioning based on device
             if (isMobile) {
@@ -756,8 +756,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Desktop view
                 hero.style.position = 'absolute';
-                hero.style.alignItems = 'flex-start';
-                hero.style.textAlign = 'left';
+                hero.style.alignItems = 'center'; // Center for desktop
+                hero.style.textAlign = 'center'; // Center for desktop
+                hero.style.width = '100%';
+                hero.style.height = '100%';
             }
         }
     }

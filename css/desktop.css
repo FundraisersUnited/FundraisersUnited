@@ -635,18 +635,39 @@ header.scrolled {
 }
 
 @media (min-width: 768px) {
-    /* Reset any mobile-specific styles */
+    /* Hide mobile brand-title and red line separator on desktop */
     .brand-title {
         display: none !important;
     }
+    .brand-title:after {
+        display: none !important;
+    }
 
-    /* Fix duplicate FUNDRAISERS UNITED text issue */
+    /* Ensure only the main h1 and tagline are visible in the hero section */
     .hero h1 {
         display: block !important;
         margin-top: 0;
         padding-top: 0;
         position: relative;
         z-index: 10;
+    }
+    .hero .tagline {
+        display: block !important;
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        margin-top: 0.5rem;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    /* Remove any accidental positioning or display of .brand-title in header */
+    header .brand-title {
+        display: none !important;
+    }
+    header .brand-title:after {
+        display: none !important;
     }
 
     /* Hide mobile elements that cause duplication */

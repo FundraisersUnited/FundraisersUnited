@@ -112,7 +112,7 @@
         max-width: 85%;
     }
 
-    /* Hide desktop elements */
+    /* Hide desktop elements on mobile */
     .nav-links {
         display: none;
     }
@@ -121,7 +121,7 @@
         display: none;
     }
 
-    /* Hide desktop-only elements */
+    /* Hide desktop-only elements on mobile */
     header h1,
     header .hero-description {
         display: none;

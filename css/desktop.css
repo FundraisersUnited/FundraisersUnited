@@ -657,38 +657,37 @@ header.scrolled {
     .hero h1 { /* "Australia's Premier..." */
         display: block !important;
         color: white;
-        font-size: 4.5rem; /* Ensure this is not too large, causing wrap */
+        font-size: 4.5rem;
         font-weight: 800;
         line-height: 1.1;
-        margin-top: 0; /* Adjusted from 120px on .hero-content */
-        margin-bottom: 20px; /* Space above red tagline */
-        padding-top: 60px; /* Bring it down from the very top */
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-top: 60px;
         text-align: center;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        position: relative; /* Ensure stacking context if needed */
-        z-index: 2; /* Above background elements */
+        position: relative;
+        z-index: 2;
     }
 
-    .hero .tagline { /* Desktop tagline "Dignified Fundraisers..." */
+    .hero .tagline { /* Desktop tagline "Dignified Fundraisers..." IN HERO */
         display: block !important;
-        color: var(--primary-color) !important; /* Red text color, ensure override */
-        font-size: 1.8rem !important; /* Ensure override */
-        font-weight: 600 !important; /* Ensure override */
-        font-family: var(--font-primary) !important; /* Ensure override */
+        color: var(--primary-color) !important; 
+        font-size: 1.8rem !important; 
+        font-weight: 600 !important; 
+        font-family: var(--font-primary) !important; 
         text-align: center !important;
         margin-top: 0 !important; 
-        margin-bottom: 25px !important; /* Space below tagline, above description */
+        margin-bottom: 25px !important; 
         letter-spacing: 0.5px !important;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
-        border: none !important; /* CRITICAL: No border */
-        border-bottom: none !important; /* CRITICAL: No red line under desktop tagline */
-        padding-bottom: 0 !important; /* CRITICAL: No padding that might fake a line */
-        background: none !important; /* CRITICAL: No background that might fake a line */
-        position: relative !important; /* For z-index if needed */
+        border: none !important; 
+        border-bottom: none !important; 
+        padding-bottom: 0 !important; 
+        background: none !important; 
+        position: relative !important; 
         z-index: 2 !important;
     }
-    /* Explicitly remove pseudo-elements that might create lines */
-    .hero .tagline:after,
+    .hero .tagline:after, /* Absolutely NO pseudo-elements for lines */
     .hero .tagline:before {
         display: none !important;
         content: none !important;
@@ -746,6 +745,71 @@ header.scrolled {
     header > nav {
         position: relative; /* Or static, ensure it doesn't overlap with absolute hero items if any */
         z-index: 10; /* Above hero content, if needed */
+    }
+
+    /* ==== DESKTOP NAVIGATION LOGO (Image 2 style) ==== */
+    header > nav .logo {
+        display: flex !important;
+        flex-direction: column; /* Stack brandmark, title, and nav tagline */
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0 !important; /* Adjust padding as needed */
+        margin: 0 auto !important; /* Center in the nav */
+        background-color: transparent !important;
+        border: none !important; /* Remove any borders */
+        text-decoration: none !important;
+        width: auto; /* Allow it to size based on content */
+        min-height: 0; /* Reset min-height */
+    }
+    header > nav .logo img.nav-brandmark { /* The circular brandmark */
+        display: block !important;
+        max-width: 70px; /* Adjust size as needed for nav */
+        height: auto;
+        margin-bottom: 10px; /* Space below brandmark */
+        border-radius: 0; /* Override global img radius if needed */
+        box-shadow: none; /* Override global img shadow if needed */
+    }
+    header > nav .logo .nav-logo-text {
+        display: block !important;
+        font-family: var(--font-primary);
+        color: white; /* Or var(--primary-color) if preferred red */
+        font-size: 1.5rem; /* Adjust size */
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 5px; /* Space below "Fundraisers United" */
+    }
+    header > nav .logo .nav-logo-tagline { /* Smaller tagline under nav logo text */
+        display: block !important;
+        font-family: var(--font-secondary);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.8rem; /* Adjust size */
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.3;
+    }
+    /* Hide the main large hero logo/image if it was structured inside header > nav .logo */
+    /* This assumes the big hero image is NOT the nav logo */
+    header > nav .logo img:not(.nav-brandmark) { /* Hide other images in nav logo container */
+        display: none !important;
+    }
+
+    /* Adjust fixed nav to accommodate this new logo structure if needed */
+    nav.fixed-nav .logo {
+        /* Styles may need adjustment for the new logo structure in fixed state */
+        padding: 5px 0 !important; /* Smaller padding for fixed nav */
+    }
+    nav.fixed-nav .logo img.nav-brandmark {
+        max-width: 40px; /* Smaller brandmark in fixed nav */
+        margin-bottom: 5px;
+    }
+    nav.fixed-nav .logo .nav-logo-text {
+        font-size: 1rem;
+        margin-bottom: 3px;
+    }
+    nav.fixed-nav .logo .nav-logo-tagline {
+        font-size: 0.65rem;
     }
 
     /* Ensure desktop main nav and logo are visible and correctly styled */

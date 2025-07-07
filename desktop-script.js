@@ -129,56 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             label.style.opacity = '1';
             label.style.fontWeight = 'bold';
         });
-        
-        // Form submission
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Use FormSubmit service for handling the form
-            const formData = new FormData(contactForm);
-            
-            fetch(contactForm.getAttribute('action'), {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Success message
-                contactForm.innerHTML = `
-                    <div class="success-message">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Thank you for your message! We will get back to you soon.</p>
-                    </div>
-                `;
-            })
-            .catch(error => {
-                // Error handling
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                
-                const errorMessage = document.createElement('div');
-                errorMessage.className = 'error-message';
-                errorMessage.textContent = 'There was a problem sending your message. Please try again later.';
-                
-                // Insert error after submit button
-                submitBtn.parentNode.insertBefore(errorMessage, submitBtn.nextSibling);
-                
-                console.error('Error:', error);
-            });
-        });
     }
     
     // Scroll reveal animations
